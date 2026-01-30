@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Getting Started with Web Development - A beginner's guide">
+  <title>Getting Started with Web Development | Pierre Wallin</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">PW</a>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../portfolio.html" class="nav-link">Portfolio</a></li>
+        <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+      </ul>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Post -->
+  <article class="blog-post">
+    <header class="blog-post-header">
+      <div class="blog-post-meta">
+        <span class="blog-card-category">Development</span>
+        <span>&#8226;</span>
+        <span>January 15, 2024</span>
+        <span>&#8226;</span>
+        <span>5 min read</span>
+      </div>
+      <h1 class="blog-post-title gradient-text">Getting Started with Web Development</h1>
+    </header>
+
+    <img src="https://picsum.photos/800/400?random=30" alt="Web Development" class="blog-post-image">
+
+    <div class="blog-post-content">
+      <p>
+        Welcome to the exciting world of web development! Whether you're looking to start a new career, build your own projects, or simply understand how websites work, this guide will help you take your first steps into this fascinating field.
+      </p>
+
+      <h2>Why Learn Web Development?</h2>
+      <p>
+        Web development is one of the most accessible and rewarding skills you can learn today. With just a computer and an internet connection, you can start creating websites that millions of people can access. Here are some reasons why web development is a great skill to learn:
+      </p>
+      <ul>
+        <li><strong>High demand:</strong> Web developers are in constant demand across all industries</li>
+        <li><strong>Creative expression:</strong> Build anything you can imagine</li>
+        <li><strong>Remote work:</strong> Work from anywhere in the world</li>
+        <li><strong>Continuous learning:</strong> The field is always evolving with new technologies</li>
+        <li><strong>Low barrier to entry:</strong> Start learning for free with online resources</li>
+      </ul>
+
+      <h2>The Three Pillars of Web Development</h2>
+      <p>
+        Every website is built on three fundamental technologies. Understanding these is essential for any web developer:
+      </p>
+
+      <h3>1. HTML (HyperText Markup Language)</h3>
+      <p>
+        HTML is the skeleton of every webpage. It provides the structure and content. Think of it as the bones of a building &mdash; it defines what elements exist on the page.
+      </p>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;Welcome to my website.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <h3>2. CSS (Cascading Style Sheets)</h3>
+      <p>
+        CSS is what makes websites beautiful. It controls colors, fonts, layouts, animations, and everything visual. If HTML is the skeleton, CSS is the skin and clothes.
+      </p>
+      <pre><code>body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a;
+  color: #dfe6e9;
+}
+
+h1 {
+  color: #6c5ce7;
+  font-size: 3rem;
+}</code></pre>
+
+      <h3>3. JavaScript</h3>
+      <p>
+        JavaScript brings websites to life with interactivity. It can respond to user actions, animate elements, fetch data, and much more. JavaScript is the muscles that make things move.
+      </p>
+      <pre><code>document.querySelector('button').addEventListener('click', () => {
+  alert('Hello! You clicked the button.');
+});</code></pre>
+
+      <h2>Getting Started: Your First Steps</h2>
+      <p>
+        Here's my recommended path for beginners:
+      </p>
+      <ol>
+        <li><strong>Set up your tools:</strong> Install a code editor like VS Code</li>
+        <li><strong>Learn HTML basics:</strong> Understand tags, attributes, and document structure</li>
+        <li><strong>Style with CSS:</strong> Learn selectors, properties, and layouts</li>
+        <li><strong>Add interactivity:</strong> Start with basic JavaScript concepts</li>
+        <li><strong>Build projects:</strong> Practice by creating real websites</li>
+        <li><strong>Learn Git:</strong> Track your code changes and collaborate</li>
+        <li><strong>Deploy your work:</strong> Share your projects with the world</li>
+      </ol>
+
+      <blockquote>
+        "The best way to learn web development is by building things. Start with simple projects and gradually increase complexity as you gain confidence."
+      </blockquote>
+
+      <h2>Resources I Recommend</h2>
+      <p>
+        There are countless resources available for learning web development. Here are some of my favorites:
+      </p>
+      <ul>
+        <li><strong>MDN Web Docs:</strong> The most comprehensive documentation for web technologies</li>
+        <li><strong>freeCodeCamp:</strong> Free, project-based learning curriculum</li>
+        <li><strong>CSS-Tricks:</strong> Excellent CSS tutorials and references</li>
+        <li><strong>JavaScript.info:</strong> In-depth JavaScript tutorials</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>
+        Starting your web development journey can feel overwhelming, but remember: every expert was once a beginner. Take it one step at a time, build projects that interest you, and don't be afraid to make mistakes &mdash; that's how we learn.
+      </p>
+      <p>
+        In my next post, I'll dive deeper into CSS and show you how to create beautiful, responsive layouts. Stay tuned!
+      </p>
+      <p>
+        <em>Happy coding!</em>
+      </p>
+    </div>
+
+    <!-- Post Navigation -->
+    <div style="display: flex; justify-content: space-between; margin-top: var(--space-lg); padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.1);">
+      <a href="../blog.html" class="btn btn-secondary">&larr; Back to Blog</a>
+      <a href="post-1.html" class="btn btn-primary">Next Post &rarr;</a>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="../index.html" class="footer-logo">PW</a>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="GitHub">GH</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          <a href="#" class="social-link" aria-label="Twitter">TW</a>
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+        </div>
+        <p class="footer-text">&copy; 2025 Pierre Wallin. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
