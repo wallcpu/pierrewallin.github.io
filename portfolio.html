@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio - Showcasing creative projects and work">
+  <title>Portfolio | Pierre Wallin</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">PW</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+      </ul>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Portfolio Header -->
+  <section class="section" style="padding-top: calc(80px + var(--space-lg));">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">My Work</span>
+        <h1 class="section-title gradient-text">Portfolio</h1>
+        <div class="section-divider"></div>
+        <p style="max-width: 600px; margin: var(--space-md) auto 0; text-align: center;">
+          A collection of projects that showcase my skills in development, design,
+          and creative problem-solving. Click on any project to learn more.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Filter -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="portfolio-filter reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="design">UI/UX Design</button>
+        <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+        <button class="filter-btn" data-filter="brand">Branding</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid">
+        <!-- Project 1 -->
+        <div class="project-card reveal" data-project="project-1" data-category="web">
+          <img src="https://picsum.photos/600/450?random=1" alt="Project One" class="project-card-image">
+          <div class="project-card-overlay">
+            <span class="project-card-category">Web Development</span>
+            <h3 class="project-card-title">Project One</h3>
+            <p class="project-card-description">A modern web application with cutting-edge features</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal" data-project="project-2" data-category="design">
+          <img src="https://picsum.photos/600/450?random=2" alt="Project Two" class="project-card-image">
+          <div class="project-card-overlay">
+            <span class="project-card-category">UI/UX Design</span>
+            <h3 class="project-card-title">Project Two</h3>
+            <p class="project-card-description">User-centered design with beautiful interfaces</p>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card reveal" data-project="project-3" data-category="mobile">
+          <img src="https://picsum.photos/600/450?random=3" alt="Project Three" class="project-card-image">
+          <div class="project-card-overlay">
+            <span class="project-card-category">Mobile App</span>
+            <h3 class="project-card-title">Project Three</h3>
+            <p class="project-card-description">Cross-platform mobile application</p>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card reveal" data-project="project-4" data-category="brand">
+          <img src="https://picsum.photos/600/450?random=4" alt="Project Four" class="project-card-image">
+          <div class="project-card-overlay">
+            <span class="project-card-category">Brand Identity</span>
+            <h3 class="project-card-title">Project Four</h3>
+            <p class="project-card-description">Complete brand identity design</p>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card reveal" data-project="project-5" data-category="web">
+          <img src="https://picsum.photos/600/450?random=5" alt="Project Five" class="project-card-image">
+          <div class="project-card-overlay">
+            <span class="project-card-category">Web Development</span>
+            <h3 class="project-card-title">Project Five</h3>
+            <p class="project-card-description">E-commerce platform with custom features</p>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card reveal" data-project="project-6" data-category="web">
+          <img src="https://picsum.photos/600/450?random=6" alt="Project Six" class="project-card-image">
+          <div class="project-card-overlay">
+            <span class="project-card-category">Interactive</span>
+            <h3 class="project-card-title">Project Six</h3>
+            <p class="project-card-description">Data visualization and interactive experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Modal -->
+  <div class="modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <img src="" alt="Project Image" class="modal-image">
+      <div class="modal-body">
+        <span class="modal-category">Category</span>
+        <h2 class="modal-title">Project Title</h2>
+        <p class="modal-description">Project description goes here.</p>
+        <div class="modal-tech">
+          <!-- Tech tags populated by JS -->
+        </div>
+        <div class="modal-links">
+          <a href="#" class="btn btn-primary">View Live</a>
+          <a href="#" class="btn btn-secondary">View Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Interested?</span>
+        <h2 class="section-title">Let's Create Together</h2>
+        <div class="section-divider"></div>
+        <p style="max-width: 600px; margin: var(--space-md) auto 0; text-align: center;">
+          Have a project in mind? I'm always open to discussing new opportunities
+          and creative collaborations.
+        </p>
+        <div class="btn-group" style="margin-top: var(--space-md);">
+          <a href="about.html#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">PW</a>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="GitHub">GH</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          <a href="#" class="social-link" aria-label="Twitter">TW</a>
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+        </div>
+        <p class="footer-text">&copy; 2025 Pierre Wallin. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

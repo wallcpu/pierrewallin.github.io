@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Me - Learn more about my background, skills, and interests">
+  <title>About | Pierre Wallin</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">PW</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="about.html" class="nav-link active">About</a></li>
+      </ul>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Hero -->
+  <section class="section">
+    <div class="container">
+      <div class="about-hero">
+        <div class="about-image-wrapper reveal">
+          <img src="https://picsum.photos/400/400?random=20" alt="Pierre Wallin" class="about-image">
+        </div>
+        <div class="about-intro reveal">
+          <h1>Hi, I'm <span class="gradient-text">Pierre Wallin</span></h1>
+          <p class="subtitle">Creative Developer & Designer</p>
+          <p>
+            I'm a passionate creator who loves building beautiful things for the web.
+            With a background in both design and development, I bring a unique
+            perspective to every project I work on.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new technologies, reading
+            about design trends, or working on personal creative projects. I believe
+            in continuous learning and pushing the boundaries of what's possible.
+          </p>
+          <div class="btn-group" style="justify-content: flex-start; margin-top: var(--space-md);">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="portfolio.html" class="btn btn-secondary">View My Work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What I Do</span>
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#128187;</div>
+          <h3 class="skill-title">Web Development</h3>
+          <p class="skill-description">
+            Building responsive, performant websites with HTML, CSS, and JavaScript.
+            Clean code and best practices are my priority.
+          </p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#127912;</div>
+          <h3 class="skill-title">UI/UX Design</h3>
+          <p class="skill-description">
+            Creating intuitive user interfaces and experiences that delight users
+            while achieving business goals.
+          </p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#128241;</div>
+          <h3 class="skill-title">Responsive Design</h3>
+          <p class="skill-description">
+            Ensuring websites look and work great on all devices, from mobile
+            phones to large desktop screens.
+          </p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#9889;</div>
+          <h3 class="skill-title">Performance</h3>
+          <p class="skill-description">
+            Optimizing websites for speed and efficiency. Fast loading times
+            and smooth interactions are essential.
+          </p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#128640;</div>
+          <h3 class="skill-title">Modern Tools</h3>
+          <p class="skill-description">
+            Proficient with modern development tools, version control, and
+            deployment workflows.
+          </p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#128161;</div>
+          <h3 class="skill-title">Problem Solving</h3>
+          <p class="skill-description">
+            Approaching challenges with creativity and analytical thinking.
+            Finding elegant solutions to complex problems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interests Section -->
+  <section class="interests-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Beyond Code</span>
+        <h2 class="section-title">Interests & Passions</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="interests-list reveal">
+        <span class="interest-tag">Photography</span>
+        <span class="interest-tag">Music</span>
+        <span class="interest-tag">Reading</span>
+        <span class="interest-tag">Travel</span>
+        <span class="interest-tag">Coffee</span>
+        <span class="interest-tag">Gaming</span>
+        <span class="interest-tag">Art</span>
+        <span class="interest-tag">Technology</span>
+        <span class="interest-tag">Nature</span>
+        <span class="interest-tag">Learning</span>
+        <span class="interest-tag">Movies</span>
+        <span class="interest-tag">Podcasts</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="section-divider"></div>
+        <p style="max-width: 600px; margin: var(--space-md) auto 0;">
+          Have a project in mind or just want to say hello? I'd love to hear from you.
+          Feel free to reach out through any of the channels below or use the contact form.
+        </p>
+      </div>
+
+      <div class="contact-links reveal">
+        <a href="mailto:hello@pierrewallin.com" class="contact-link">
+          <span class="contact-link-icon">&#9993;</span>
+          <span>hello@pierrewallin.com</span>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-icon">&#127760;</span>
+          <span>linkedin.com/in/pierrewallin</span>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-icon">&#128187;</span>
+          <span>github.com/pierrewallin</span>
+        </a>
+      </div>
+
+      <form class="contact-form reveal">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="What would you like to say?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">PW</a>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="GitHub">GH</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">LI</a>
+          <a href="#" class="social-link" aria-label="Twitter">TW</a>
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+        </div>
+        <p class="footer-text">&copy; 2025 Pierre Wallin. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
