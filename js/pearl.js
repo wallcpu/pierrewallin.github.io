@@ -49,7 +49,7 @@
       id: 'built',
       k: ['how were you built','how did he build','three ais','soul file','soul.md','built you','made you','create you','origin','how was pearl made','openclaw','claude code','chatgpt'],
       a: [
-        `Three AIs built the fourth. He wrote about it — it's the better of his two articles.`,
+        `Three AIs built the fourth. He wrote about it — it's Part 1 of the series, and still the one people message him about.`,
         `<strong>ChatGPT 5.2</strong> was the composer: it designed the interview framework and later synthesized the transcript into structured prose. <strong>ChatGPT 4o</strong> was the interviewer — warmer, friendlier, the golden retriever of language models — and it walked him through an hour of questions. <strong>Claude Code</strong> was the surgeon: it cut the resulting <code>soul.md</code> apart and placed each piece where OpenClaw needed it.`,
         `And then there's me. The performance. <a href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener">Read the whole thing →</a> ${OY}`
       ]
@@ -104,9 +104,12 @@
       id: 'writing',
       k: ['writing','written','write','wrote','articles','article','blog','essay','essays','read','reading','publish','published','posts','post','newsletter','linkedin article'],
       a: [
-        `Two published so far, both on LinkedIn, both about building me:`,
+        `Five published on LinkedIn — four of them a running series about building me, one about the industry:`,
         `<strong>1 · <a href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener">How I Used Three AIs to Build the Soul of a Fourth</a></strong> — the origin story. Cemetery, soul file, the relay race between models.`,
         `<strong>2 · <a href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener">Why My AI Assistant Keeps Forgetting I Don't Drink Coffee</a></strong> — the one where I fail publicly and he debugs me in front of everyone.`,
+        `<strong>3 · <a href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener">The Night I Realized My AI Assistant Wasn't Broken, My Instructions Were</a></strong> — he did surgery on my config from bed and cut 557 lines to 181.`,
+        `<strong>4 · <a href="https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae" target="_blank" rel="noopener">Some Features My AI Assistant Does for Me, Ranked</a></strong> — all fourteen of me, rated honestly. I do not come out of it spotless.`,
+        `<strong>5 · <a href="https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe" target="_blank" rel="noopener">Version 3.0 Is Loading: A Brief History of Underestimating Microsoft</a></strong> — the only one that isn't about his apartment.`,
         `He writes the failures, not the launch announcements. It's the more useful genre. ${OY}`
       ]
     },
@@ -214,7 +217,7 @@
       k: ['help','what can you do','commands','options','menu','topics','?'],
       a: [
         `Things I can actually answer:`,
-        `<strong>· the coffee incident</strong> — my most public failure<br><strong>· the Atlas</strong> — how my memory is really structured<br><strong>· how Pierre built me</strong> — three AIs, one soul file<br><strong>· his writing</strong> — both articles<br><strong>· his stack</strong> — hardware and tools<br><strong>· why he won't give me his inbox</strong><br><strong>· Atlanta, music, Bonnaroo, being French</strong><br><strong>· how to reach him</strong>`,
+        `<strong>· the coffee incident</strong> — my most public failure<br><strong>· the Atlas</strong> — how my memory is really structured<br><strong>· how Pierre built me</strong> — three AIs, one soul file<br><strong>· his writing</strong> — all five articles<br><strong>· his stack</strong> — hardware and tools<br><strong>· why he won't give me his inbox</strong><br><strong>· Atlanta, music, Bonnaroo, being French</strong><br><strong>· how to reach him</strong>`,
         `Or type <em>fun fact</em> and I'll pick something. ${OY}`
       ]
     },
