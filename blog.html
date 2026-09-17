@@ -1,146 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Blog - Writing about AI, technology, and building with code">
-  <title>Blog | Pierre Wallin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing — Pierre Wallin</title>
+<meta name="description" content="Essays by Pierre Wallin on agentic AI, retrieval architecture, and what actually breaks when you build a personal assistant that runs 24/7.">
+<meta name="theme-color" content="#07080c">
+<link rel="canonical" href="https://pierrewallin.com/blog.html">
+<meta property="og:title" content="Writing — Pierre Wallin">
+<meta property="og:description" content="Essays on agentic AI, retrieval architecture, and building things that almost work.">
+<meta property="og:image" content="https://pierrewallin.com/assets/portrait.svg">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Page Transition Overlay -->
-  <div class="page-transition"></div>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">PW</a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-        <li><a href="blog.html" class="nav-link active">Blog</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-      </ul>
-      <div class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+<div class="progress"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">PW</span>
+      <span class="brand-text">Pierre Wallin<span> / Atlanta</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Work</a></li>
+      <li><a href="blog.html" class="active">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Search</button>
+      <button class="icon-btn js-theme" onclick="pwToggleTheme()" aria-label="Toggle colour theme"><span class="js-theme-icon">☀</span></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Blog Header -->
-  <section class="section" style="padding-top: calc(80px + var(--space-lg));">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">My Thoughts</span>
-        <h1 class="section-title gradient-text">Blog</h1>
-        <div class="section-divider"></div>
-        <p style="max-width: 600px; margin: var(--space-md) auto 0; text-align: center;">
-          Writing about AI, building with code, and the intersection of
-          technology and everyday life. Published on LinkedIn.
-        </p>
-      </div>
-    </div>
-  </section>
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow rv in">Writing</span>
+    <h1 class="rv in">The failure log,<br><span class="iri">published anyway.</span></h1>
+    <p class="lede rv in" style="max-width:62ch">Anyone can post the demo that worked. I write up the
+    architecture that embarrassed me and the fix that followed — because that's the version I'd
+    have wanted to read before I started. Published on LinkedIn.</p>
+  </div>
+</header>
 
-  <!-- Blog Grid -->
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="blog-grid">
-        <!-- Article 2 (Most Recent) -->
-        <article class="blog-card reveal">
-          <a href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-coffee-wallin-xnwse" target="_blank" rel="noopener noreferrer">
-            <img src="https://picsum.photos/600/400?random=11" alt="Why My AI Assistant Keeps Forgetting I Don't Drink Coffee" class="blog-card-image">
-          </a>
-          <div class="blog-card-content">
-            <div class="blog-card-meta">
-              <span class="blog-card-category">AI</span>
-              <span>&#8226;</span>
-              <span>Feb 24, 2026</span>
-            </div>
-            <a href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-coffee-wallin-xnwse" target="_blank" rel="noopener noreferrer">
-              <h3 class="blog-card-title">Why My AI Assistant Keeps Forgetting I Don't Drink Coffee</h3>
-            </a>
-            <p class="blog-card-excerpt">
-              Debugging Pearl's memory architecture — when your personal AI keeps making
-              the same mistakes, the fix isn't always where you'd expect.
-            </p>
-            <a href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-coffee-wallin-xnwse" target="_blank" rel="noopener noreferrer" class="blog-card-link">
-              Read on LinkedIn <span>&rarr;</span>
-            </a>
-          </div>
-        </article>
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div style="display:grid;gap:1.4rem">
 
-        <!-- Article 1 -->
-        <article class="blog-card reveal">
-          <a href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-livne" target="_blank" rel="noopener noreferrer">
-            <img src="https://picsum.photos/600/400?random=10" alt="How I Used Three AIs to Build the Soul of a Fourth" class="blog-card-image">
-          </a>
-          <div class="blog-card-content">
-            <div class="blog-card-meta">
-              <span class="blog-card-category">AI</span>
-              <span>&#8226;</span>
-              <span>Feb 17, 2026</span>
-            </div>
-            <a href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-livne" target="_blank" rel="noopener noreferrer">
-              <h3 class="blog-card-title">How I Used Three AIs to Build the Soul of a Fourth</h3>
-            </a>
-            <p class="blog-card-excerpt">
-              Building Pearl, a personal AI assistant, by orchestrating ChatGPT and Claude Code
-              together — a look at what happens when AIs collaborate to create something new.
-            </p>
-            <a href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-livne" target="_blank" rel="noopener noreferrer" class="blog-card-link">
-              Read on LinkedIn <span>&rarr;</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter Section -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">Stay Updated</span>
-        <h2 class="section-title">Subscribe to My Newsletter</h2>
-        <div class="section-divider"></div>
-        <p style="max-width: 600px; margin: var(--space-md) auto 0; text-align: center;">
-          Get the latest articles, tutorials, and updates delivered straight
-          to your inbox. No spam, unsubscribe anytime.
-        </p>
-        <form class="contact-form" style="margin-top: var(--space-md);">
-          <div style="display: flex; gap: var(--space-sm); max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
-            <input type="email" class="form-input" placeholder="Enter your email" style="flex: 1; min-width: 200px;" required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <a href="index.html" class="footer-logo">PW</a>
-        <div class="footer-social">
-          <a href="https://linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">LI</a>
+      <a class="post rv" href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener">
+        <div class="post-art art-1"><span>☕</span></div>
+        <div>
+          <div class="post-meta"><span class="tag">Architecture</span><span>Feb 24, 2026</span><span>9 min read</span></div>
+          <h3>Why My AI Assistant Keeps Forgetting I Don't Drink Coffee</h3>
+          <p>Three mornings running, Pearl opened my briefing by recommending a cup of coffee.
+          I have never had one. Nothing in her memory said otherwise — she simply never looked,
+          and filled the gap with the most statistically plausible answer available.</p>
+          <p style="margin-top:.7rem">What follows is the diagnosis: not a memory failure but an
+          architecture failure, fixed with an index file called <code>atlas.yaml</code>, broken again
+          a week later, and finally solved with brute force. On why these models don't forget —
+          they confabulate — and why reasonable is the dangerous answer.</p>
+          <span class="card-link">Read on LinkedIn <span>→</span></span>
         </div>
-        <p class="footer-text">&copy; 2026 Pierre Wallin. All rights reserved.</p>
+      </a>
+
+      <a class="post rv rv-d1" href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener">
+        <div class="post-art art-2"><span>🎻</span></div>
+        <div>
+          <div class="post-meta"><span class="tag">Agents</span><span>Feb 17, 2026</span><span>11 min read</span></div>
+          <h3>How I Used Three AIs to Build the Soul of a Fourth</h3>
+          <p>A cold February morning in Oakland Cemetery, AirPods in, talking out loud to a chatbot
+          about my relationship with procrastination and the several distinct meanings I assign to
+          the word "later." The Mac Mini hadn't even arrived yet — I was building the soul before
+          the body.</p>
+          <p style="margin-top:.7rem">ChatGPT 5.2 as composer, 4o as interviewer, Claude Code as
+          surgeon, Pearl as the performance. On why the future is many models rather than one, what
+          it means that a personality fits in a markdown file, and the one permission I still won't
+          grant.</p>
+          <span class="card-link">Read on LinkedIn <span>→</span></span>
+        </div>
+      </a>
+
+      <article class="post rv rv-d2" style="opacity:.72">
+        <div class="post-art art-3"><span>🗄</span></div>
+        <div>
+          <div class="post-meta"><span class="tag">Unpublished</span><span>Shelved</span><span>—</span></div>
+          <h3>Pearl Is Fixed</h3>
+          <p>I drafted this one after the Atlas went in. The briefings were complete, retrieval was
+          precise, and I was extremely pleased with myself. The thesis was: here's the architecture,
+          here's what I learned, problem solved.</p>
+          <p style="margin-top:.7rem">The following week Pearl read a file with "Bonnaroo" written in
+          it, checked nothing, and asked me whether I was going. The draft stays in the folder. It's
+          a better reminder there than it would have been as a post.</p>
+          <span class="card-link" style="color:var(--ink-mute);pointer-events:none">Not published — on purpose</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Pull quote -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:center">
+      <blockquote class="quote rv" style="max-width:none">
+        These models don't forget the way we do. They have a retrieval system that either fires or doesn't — and when it doesn't, they confabulate.
+        <cite>— Why My AI Assistant Keeps Forgetting…</cite>
+      </blockquote>
+      <div class="card rv rv-d1">
+        <div class="card-icon">🦪</div>
+        <h3>Prefer the short version?</h3>
+        <p>Pearl has read both essays and will summarise either one, argue about the conclusions,
+        or tell you the parts that didn't make it in. She's a biased source. She was there.</p>
+        <button class="card-link" data-pearl="Tell me about his writing">Ask Pearl <span>→</span></button>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- Scripts -->
-  <script src="js/main.js"></script>
+<!-- Follow -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head sec-head--center rv">
+      <span class="eyebrow">Keep up</span>
+      <h2>New essays land on LinkedIn.</h2>
+      <p class="lede">No newsletter, no signup form that quietly does nothing. I publish where
+      I already write, roughly whenever something breaks interestingly enough to be worth
+      explaining.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:2rem">
+        <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener" class="btn btn-primary" data-magnetic>Follow on LinkedIn</a>
+        <a href="mailto:hello@pierrewallin.com?subject=About%20your%20writing" class="btn btn-ghost">Email me a reaction</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-word iri">Let's build<br>something odd.</div>
+      <a href="mailto:hello@pierrewallin.com" class="btn btn-primary" data-magnetic>Start a conversation</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Pierre Wallin · Atlanta, GA · 🦪</span>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">LinkedIn</a>
+        <button data-palette>⌘K</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="pearl-fab" aria-label="Chat with Pearl">
+  <span class="pearl-orb">🦪</span>
+  <span><b>Ask Pearl</b><small>she knows him</small></span>
+</button>
+
+<div class="pearl-panel" role="dialog" aria-label="Chat with Pearl">
+  <div class="pearl-head">
+    <span class="pearl-orb">🦪</span>
+    <div class="meta"><b>Pearl</b><small><i></i> online · static edition</small></div>
+    <button class="icon-btn pearl-close" aria-label="Close chat">✕</button>
+  </div>
+  <div class="pearl-log"></div>
+  <div class="pearl-chips"></div>
+  <form class="pearl-input" onsubmit="return false">
+    <input type="text" placeholder="Ask about Pierre…" aria-label="Message Pearl" autocomplete="off">
+    <button class="pearl-send" type="button" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </form>
+</div>
+
+<div class="cmdk" role="dialog" aria-label="Command palette">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search pages, articles, actions…" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/pearl.js"></script>
 </body>
 </html>

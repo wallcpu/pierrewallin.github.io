@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found — Pierre Wallin</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="/" class="brand">
+      <span class="brand-mark">PW</span>
+      <span class="brand-text">Pierre Wallin<span> / Atlanta</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/portfolio.html">Work</a></li>
+      <li><a href="/blog.html">Writing</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn js-theme" onclick="pwToggleTheme()" aria-label="Toggle colour theme"><span class="js-theme-icon">☀</span></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="section" style="min-height:82svh;display:grid;place-items:center;text-align:center">
+  <div class="wrap">
+    <span class="eyebrow rv in" style="justify-content:center">Error 404</span>
+    <h1 class="display rv in" style="font-size:clamp(3rem,14vw,9rem);margin:1rem 0">
+      <span class="iri">Not in the index.</span>
+    </h1>
+    <p class="lede rv in" style="max-width:52ch;margin-inline:auto">
+      Retrieval fired and came back empty. Which — as I've written at length — is the
+      correct behaviour. The wrong behaviour would be inventing something plausible
+      and handing it to you with confidence.
+    </p>
+    <div class="btn-row rv in" style="justify-content:center;margin-top:2.4rem">
+      <a href="/" class="btn btn-primary" data-magnetic>Back to the map</a>
+      <button class="btn btn-ghost" data-pearl="open">🦪 Ask Pearl instead</button>
+    </div>
+  </div>
+</section>
+
+<button class="pearl-fab" aria-label="Chat with Pearl">
+  <span class="pearl-orb">🦪</span>
+  <span><b>Ask Pearl</b><small>she knows him</small></span>
+</button>
+
+<div class="pearl-panel" role="dialog" aria-label="Chat with Pearl">
+  <div class="pearl-head">
+    <span class="pearl-orb">🦪</span>
+    <div class="meta"><b>Pearl</b><small><i></i> online · static edition</small></div>
+    <button class="icon-btn pearl-close" aria-label="Close chat">✕</button>
+  </div>
+  <div class="pearl-log"></div>
+  <div class="pearl-chips"></div>
+  <form class="pearl-input" onsubmit="return false">
+    <input type="text" placeholder="Ask about Pierre…" aria-label="Message Pearl" autocomplete="off">
+    <button class="pearl-send" type="button" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </form>
+</div>
+
+<script src="/js/main.js"></script>
+<script src="/js/pearl.js"></script>
+</body>
+</html>
