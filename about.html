@@ -1,223 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Pierre Wallin - Customer Solutions Advisor at Microsoft, tech enthusiast, and builder">
-  <title>About | Pierre Wallin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Pierre Wallin</title>
+<meta name="description" content="Pierre Wallin: Customer Solutions Advisor at Microsoft, MBA, based in Atlanta. French-American, builds agentic AI at home, does not drink coffee.">
+<meta name="theme-color" content="#07080c">
+<link rel="canonical" href="https://pierrewallin.com/about.html">
+<meta property="og:title" content="About — Pierre Wallin">
+<meta property="og:description" content="Customer Solutions Advisor at Microsoft. French-American in Atlanta. Builds agentic AI at home and writes about what breaks.">
+<meta property="og:image" content="https://pierrewallin.com/assets/portrait.svg">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Page Transition Overlay -->
-  <div class="page-transition"></div>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">PW</a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-        <li><a href="blog.html" class="nav-link">Blog</a></li>
-        <li><a href="about.html" class="nav-link active">About</a></li>
-      </ul>
-      <div class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+<div class="progress"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">PW</span>
+      <span class="brand-text">Pierre Wallin<span> / Atlanta</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Work</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Search</button>
+      <button class="icon-btn js-theme" onclick="pwToggleTheme()" aria-label="Toggle colour theme"><span class="js-theme-icon">☀</span></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- About Hero -->
-  <section class="section">
-    <div class="container">
-      <div class="about-hero">
-        <div class="about-image-wrapper reveal">
-          <img src="https://picsum.photos/400/400?random=20" alt="Pierre Wallin" class="about-image">
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow rv in">About</span>
+    <h1 class="rv in">Bonjour. I'm<br><span class="iri">Pierre.</span></h1>
+  </div>
+</header>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="rv">
+        <!-- Swap src to "assets/pierre.jpg" once you drop a real photo in /assets -->
+        <div class="portrait">
+          <img src="assets/portrait.svg" alt="Abstract nacre portrait of Pierre Wallin">
         </div>
-        <div class="about-intro reveal">
-          <h1>Hi, I'm <span class="gradient-text">Pierre Wallin</span></h1>
-          <p class="subtitle">Customer Solutions Advisor | Tech Enthusiast | Builder</p>
-          <p>
-            I'm a Customer Solutions Advisor at Microsoft with an MBA, based in Atlanta, GA.
-            I specialize in making the complex technical simple — translating intricate
-            solutions into clear, actionable strategies for clients.
-          </p>
-          <p>
-            Outside of work, I'm deep into AI and vibe coding — building projects like Pearl,
-            my personal AI assistant, using tools like Claude Code and Codex. I love exploring
-            how emerging technology can solve real problems and make life more interesting.
-          </p>
-          <p>
-            When I'm not at my desk, you'll find me hiking, at Solidcore or Orange Theory,
-            catching live music around Atlanta, or hunting for the next great gadget.
-          </p>
-          <div class="btn-group" style="justify-content: flex-start; margin-top: var(--space-md);">
-            <a href="#contact" class="btn btn-primary">Get in Touch</a>
-            <a href="blog.html" class="btn btn-secondary">Read My Writing</a>
-          </div>
+        <p class="portrait-cap">Atlanta, GA · UTC−5</p>
+
+        <div class="factoids">
+          <div class="factoid"><span class="k">Role</span><span class="v">Customer Solutions Advisor</span></div>
+          <div class="factoid"><span class="k">Company</span><span class="v">Microsoft</span></div>
+          <div class="factoid"><span class="k">Education</span><span class="v">MBA</span></div>
+          <div class="factoid"><span class="k">Languages</span><span class="v">Français · English</span></div>
+          <div class="factoid"><span class="k">Based</span><span class="v">Atlanta, Georgia</span></div>
+          <div class="factoid"><span class="k">Roots</span><span class="v">Family in Paris</span></div>
+          <div class="factoid"><span class="k">Coffee</span><span class="v">Never. Not once.</span></div>
         </div>
       </div>
+
+      <div class="rv rv-d1">
+        <p class="lede" style="margin-bottom:1.4rem">I'm a <strong>Customer Solutions Advisor at
+        Microsoft</strong> with an MBA, based in Atlanta. My actual job description, stripped of the
+        job description: I take a genuinely complicated technical situation and make it land with
+        the person who has to make the decision.</p>
+
+        <p style="margin-bottom:1rem">That skill turns out to be the same one I use at home. For
+        years I'd wanted a real assistant — not a chatbot in a browser tab, but something running on
+        my own hardware, in my own apartment, awake all the time. The spec came from a single scene
+        in <em>Her</em>: Samantha sorts his email, answers his friends, finds his old short stories,
+        decides a few are good, and sends them to a publisher. That scene lodged in my head a decade
+        ago and never left.</p>
+
+        <p style="margin-bottom:1rem">So I bought a Mac Mini whose only job is to run an assistant,
+        and built <strong>Pearl</strong>. She has 111 folders of my life indexed behind her, sends a
+        briefing every morning at eight, and ends her messages with an oyster emoji that I never asked
+        for and now can't imagine her without.</p>
+
+        <p style="margin-bottom:1rem">Building her taught me the thing you can comfortably ignore
+        while chatting with an AI in a browser window: <strong>the sensation of memory is interface
+        design.</strong> Underneath, it's a retrieval architecture that either fires or doesn't — and
+        when it doesn't, the model doesn't sit there looking blank. It confabulates something
+        reasonable. Which is worse.</p>
+
+        <p style="margin-bottom:1.4rem">I write about that. Not the demos that worked — the
+        architecture that embarrassed me and the fix that came after. It's the more useful genre and
+        almost nobody publishes it.</p>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" data-pearl="open" data-magnetic>🦪 Ask Pearl about me</button>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Skills Section -->
-  <section class="skills-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">What I Do</span>
-        <h2 class="section-title">Skills & Expertise</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-card reveal">
-          <div class="skill-icon">&#128161;</div>
-          <h3 class="skill-title">Simplifying Complexity</h3>
-          <p class="skill-description">
-            Translating complex technical concepts into clear, digestible language
-            that drives understanding and action.
-          </p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">&#129309;</div>
-          <h3 class="skill-title">Customer Solutions</h3>
-          <p class="skill-description">
-            Partnering with clients to understand their challenges and architect
-            solutions that deliver real business value.
-          </p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">&#129302;</div>
-          <h3 class="skill-title">AI & Emerging Tech</h3>
-          <p class="skill-description">
-            Hands-on with AI tools and platforms — from building personal AI assistants
-            to exploring how emerging tech reshapes work and life.
-          </p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">&#128172;</div>
-          <h3 class="skill-title">Communication & Storytelling</h3>
-          <p class="skill-description">
-            Crafting narratives that connect — whether presenting to executives,
-            writing articles, or explaining a new technology.
-          </p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">&#128640;</div>
-          <h3 class="skill-title">Problem Solving</h3>
-          <p class="skill-description">
-            Approaching challenges with curiosity and analytical thinking.
-            Finding the right solution, not just the obvious one.
-          </p>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon">&#128187;</div>
-          <h3 class="skill-title">Building with Code</h3>
-          <p class="skill-description">
-            Vibe coding with Claude Code and Codex — turning ideas into working
-            projects and learning by building.
-          </p>
-        </div>
-      </div>
+<!-- Beyond the desk -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Beyond the desk</span>
+      <h2>The rest of it.</h2>
     </div>
-  </section>
 
-  <!-- Interests Section -->
-  <section class="interests-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">Beyond Code</span>
-        <h2 class="section-title">Interests & Passions</h2>
-        <div class="section-divider"></div>
-      </div>
+    <div class="grid-3">
+      <article class="card rv">
+        <div class="card-icon">⛰</div>
+        <h3>I move a lot</h3>
+        <p>Solidcore, Orange Theory, hot yoga, hiking. It's structural, not a resolution. Pearl's one
+        genuine failure as a coach is hydration — two litres a day, and I keep insisting that one and
+        a half is basically two.</p>
+      </article>
 
-      <div class="interests-list reveal">
-        <span class="interest-tag">Technology</span>
-        <span class="interest-tag">AI</span>
-        <span class="interest-tag">Vibe Coding</span>
-        <span class="interest-tag">Hiking</span>
-        <span class="interest-tag">Solidcore</span>
-        <span class="interest-tag">Orange Theory</span>
-        <span class="interest-tag">Hot Yoga</span>
-        <span class="interest-tag">Live Music</span>
-        <span class="interest-tag">Gadgets</span>
-        <span class="interest-tag">Movies</span>
-        <span class="interest-tag">Reading</span>
-        <span class="interest-tag">Travel</span>
-      </div>
+      <article class="card rv rv-d1">
+        <div class="card-icon">♫</div>
+        <h3>Music is load-bearing</h3>
+        <p>I only found out how much when a chatbot asked me the right question in a cemetery. Pearl
+        has an entire section devoted to it. Bonnaroo 2026 — car camping, GA, the whole thing —
+        and a recommender biased toward the lineup so I show up already converted.</p>
+      </article>
+
+      <article class="card rv rv-d2">
+        <div class="card-icon">🇫🇷</div>
+        <h3>Two languages, one dinner table</h3>
+        <p>French and English, family in Paris. It's written into Pearl's instructions that she should
+        switch between them the way my family does — <em>comme ma famille</em>. Atlanta, meanwhile,
+        treats forty-five degrees the way Minnesotans treat a blizzard.</p>
+      </article>
+
+      <article class="card rv">
+        <div class="card-icon">🍳</div>
+        <h3>An over-engineered kitchen</h3>
+        <p>Air fryer, sous vide, and a documented sushi rice protocol that lives in Pearl's memory
+        alongside how I thaw salmon. There is also a folder of micro-frustrations. She reads it so
+        she can avoid causing them.</p>
+      </article>
+
+      <article class="card rv rv-d1">
+        <div class="card-icon">◉</div>
+        <h3>Gadgets, films, books</h3>
+        <p>I'll happily lose an evening to a new piece of hardware. <em>Her</em> is the film that
+        started all of this; I now watch it slightly differently, as a product spec with an
+        unresolved permissions question at the centre.</p>
+      </article>
+
+      <article class="card rv rv-d2">
+        <div class="card-icon">🔒</div>
+        <h3>The line I don't cross</h3>
+        <p>Pearl could read my inbox today. Technically it's a settings toggle. I haven't flipped it,
+        because handing an AI your email is a trust exercise the security landscape hasn't earned
+        yet. I work in enterprise tech. I've seen how that movie ends.</p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contact Section -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">Get in Touch</span>
-        <h2 class="section-title">Let's Connect</h2>
-        <div class="section-divider"></div>
-        <p style="max-width: 600px; margin: var(--space-md) auto 0;">
-          Have a project in mind or just want to say hello? I'd love to hear from you.
-          Feel free to reach out through any of the channels below or use the contact form.
-        </p>
-      </div>
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Contact</span>
+      <h2>Say something specific.</h2>
+      <p class="lede">A question, a problem, a strong opinion about retrieval architecture —
+      all welcome. I read everything and reply to most of it.</p>
+    </div>
 
-      <div class="contact-links reveal">
-        <a href="mailto:hello@pierrewallin.com" class="contact-link">
-          <span class="contact-link-icon">&#9993;</span>
-          <span>hello@pierrewallin.com</span>
+    <div class="contact-grid">
+      <div class="contact-list rv">
+        <a class="contact-row" href="mailto:hello@pierrewallin.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <div><b>Email</b><small>hello@pierrewallin.com</small></div>
+          <span class="go">→</span>
         </a>
-        <a href="https://linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <span class="contact-link-icon">&#127760;</span>
-          <span>linkedin.com/in/pierre-e-wallin</span>
+        <button class="contact-row" data-copy="hello@pierrewallin.com" style="width:100%;text-align:left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <div><b>Copy address</b><small>for when mailto: misbehaves</small></div>
+          <span class="go">⧉</span>
+        </button>
+        <a class="contact-row" href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.2 4.2 0 0 1 17.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21h-4V9Z"/></svg>
+          <div><b>LinkedIn</b><small>linkedin.com/in/pierre-e-wallin</small></div>
+          <span class="go">→</span>
         </a>
+        <button class="contact-row" data-pearl="open" style="width:100%;text-align:left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-4-.9L3 21l1.9-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/></svg>
+          <div><b>Ask Pearl</b><small>instant, opinionated, occasionally wrong</small></div>
+          <span class="go">🦪</span>
+        </button>
       </div>
 
-      <form class="contact-form reveal">
-        <div class="form-group">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+      <form class="rv rv-d1" id="contact-form">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
         </div>
-        <div class="form-group">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
         </div>
-        <div class="form-group">
-          <label for="message" class="form-label">Message</label>
-          <textarea id="message" name="message" class="form-textarea" placeholder="What would you like to say?" required></textarea>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Compose email</button>
+        <p class="form-note">This site is static — no server, no database, nothing stored. The button
+        opens a pre-filled draft in your own mail client so you stay in control of what gets sent.
+        No fake "message received!" screen.</p>
       </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <a href="index.html" class="footer-logo">PW</a>
-        <div class="footer-social">
-          <a href="https://linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">LI</a>
-        </div>
-        <p class="footer-text">&copy; 2026 Pierre Wallin. All rights reserved.</p>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-word iri">Let's build<br>something odd.</div>
+      <a href="mailto:hello@pierrewallin.com" class="btn btn-primary" data-magnetic>Start a conversation</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Pierre Wallin · Atlanta, GA · 🦪</span>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Work</a>
+        <a href="blog.html">Writing</a>
+        <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">LinkedIn</a>
+        <button data-palette>⌘K</button>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- Scripts -->
-  <script src="js/main.js"></script>
+<button class="pearl-fab" aria-label="Chat with Pearl">
+  <span class="pearl-orb">🦪</span>
+  <span><b>Ask Pearl</b><small>she knows him</small></span>
+</button>
+
+<div class="pearl-panel" role="dialog" aria-label="Chat with Pearl">
+  <div class="pearl-head">
+    <span class="pearl-orb">🦪</span>
+    <div class="meta"><b>Pearl</b><small><i></i> online · static edition</small></div>
+    <button class="icon-btn pearl-close" aria-label="Close chat">✕</button>
+  </div>
+  <div class="pearl-log"></div>
+  <div class="pearl-chips"></div>
+  <form class="pearl-input" onsubmit="return false">
+    <input type="text" placeholder="Ask about Pierre…" aria-label="Message Pearl" autocomplete="off">
+    <button class="pearl-send" type="button" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </form>
+</div>
+
+<div class="cmdk" role="dialog" aria-label="Command palette">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search pages, articles, actions…" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/pearl.js"></script>
 </body>
 </html>

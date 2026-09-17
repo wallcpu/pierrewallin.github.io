@@ -1,410 +1,422 @@
-/* ============================================
-   ARTISTIC PERSONAL WEBSITE - MAIN.JS
-   Clean, Minimal JavaScript for Interactivity
-   ============================================ */
+/* =============================================================
+   pierrewallin.com — interaction layer
+   ============================================================= */
+(function () {
+  'use strict';
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all features
-  initNavigation();
-  initScrollEffects();
-  initProjectModal();
-  initPortfolioFilter();
-  initPageTransitions();
-  initScrollReveal();
-});
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-/* ---------- Navigation ---------- */
-function initNavigation() {
-  const nav = document.querySelector('.nav');
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  const navLinkItems = document.querySelectorAll('.nav-link');
+  /* ---------- Theme ---------- */
+  const THEME_KEY = 'pw-theme';
+  const root = document.documentElement;
 
-  // Mobile menu toggle
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+    $$('.js-theme-icon').forEach(el => { el.textContent = t === 'light' ? '☾' : '☀'; });
   }
+  function toggleTheme() {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    if (document.startViewTransition && !reduced) document.startViewTransition(() => applyTheme(next));
+    else applyTheme(next);
+  }
+  (function initTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+    applyTheme(saved || 'dark');
+  })();
+  window.pwToggleTheme = toggleTheme;
 
-  // Close mobile menu when clicking a link
-  navLinkItems.forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle?.classList.remove('active');
-      navLinks?.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-  });
+  /* ---------- Toast ---------- */
+  let toastEl, toastTimer;
+  function toast(msg) {
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'toast';
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    requestAnimationFrame(() => toastEl.classList.add('show'));
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);
+  }
+  window.pwToast = toast;
 
-  // Scroll effect for navigation
-  let lastScroll = 0;
+  /* ---------- Scroll progress + sticky nav ---------- */
+  const progress = $('.progress');
+  const nav = $('.nav');
+  let ticking = false;
+
+  function onScroll() {
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (nav) nav.classList.toggle('is-stuck', y > 24);
+    ticking = false;
+  }
   window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
 
-    // Add scrolled class for background
-    if (currentScroll > 50) {
-      nav?.classList.add('scrolled');
-    } else {
-      nav?.classList.remove('scrolled');
-    }
+  /* ---------- Mobile nav ---------- */
+  const burger = $('.burger');
+  const navLinks = $('.nav-links');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.addEventListener('click', e => {
+      if (e.target.closest('a')) { burger.classList.remove('open'); navLinks.classList.remove('open'); }
+    });
+  }
 
-    lastScroll = currentScroll;
-  });
-
-  // Set active link based on current page
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  navLinkItems.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
-    }
-  });
-}
-
-/* ---------- Scroll Effects ---------- */
-function initScrollEffects() {
-  // Parallax effect for floating shapes
-  const shapes = document.querySelectorAll('.shape');
-
-  if (shapes.length > 0) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-
-      shapes.forEach((shape, index) => {
-        const speed = 0.1 + (index * 0.05);
-        shape.style.transform = `translateY(${scrolled * speed}px)`;
+  /* ---------- Reveal on scroll ---------- */
+  const revealables = $$('.rv');
+  if ('IntersectionObserver' in window && revealables.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealables.forEach(el => io.observe(el));
+  } else {
+    revealables.forEach(el => el.classList.add('in'));
+  }
+
+  /* ---------- Spotlight cards ---------- */
+  function trackSpotlight(el) {
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  }
+  $$('.card, .post').forEach(trackSpotlight);
+
+  /* ---------- Active section in nav (single-page) ---------- */
+  const sectionLinks = $$('.nav-links a[href^="#"]');
+  if (sectionLinks.length && 'IntersectionObserver' in window) {
+    const targets = sectionLinks.map(a => $(a.getAttribute('href'))).filter(Boolean);
+    const so = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        sectionLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    targets.forEach(t => so.observe(t));
+  }
+
+  /* ---------- Typed subtitle ---------- */
+  const typedEl = $('[data-typed]');
+  if (typedEl && !reduced) {
+    const words = JSON.parse(typedEl.getAttribute('data-typed'));
+    let wi = 0, ci = 0, deleting = false;
+    (function tick() {
+      const w = words[wi];
+      ci += deleting ? -1 : 1;
+      typedEl.textContent = w.slice(0, ci);
+      let delay = deleting ? 38 : 72;
+      if (!deleting && ci === w.length) { delay = 1900; deleting = true; }
+      else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 320; }
+      setTimeout(tick, delay);
+    })();
+  } else if (typedEl) {
+    typedEl.textContent = JSON.parse(typedEl.getAttribute('data-typed'))[0];
+  }
+
+  /* ---------- Count up ---------- */
+  const counters = $$('[data-count]');
+  if (counters.length && 'IntersectionObserver' in window) {
+    const co = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        co.unobserve(en.target);
+        const el = en.target;
+        const target = parseFloat(el.getAttribute('data-count'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        if (reduced) { el.textContent = target + suffix; return; }
+        const dur = 1500, t0 = performance.now();
+        (function step(now) {
+          const p = Math.min((now - t0) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => co.observe(el));
+  }
+
+  /* ---------- Custom cursor + magnetic ---------- */
+  if (fine && !reduced) {
+    const dot = document.createElement('div'); dot.className = 'cursor';
+    const ring = document.createElement('div'); ring.className = 'cursor-ring';
+    document.body.append(dot, ring);
+    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+
+    window.addEventListener('pointermove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+    }, { passive: true });
+
+    (function loop() {
+      rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+      requestAnimationFrame(loop);
+    })();
+
+    document.addEventListener('pointerover', e => {
+      ring.classList.toggle('hot', !!e.target.closest('a, button, input, textarea, .chip, .card, .post'));
+    });
+
+    $$('[data-magnetic]').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        el.style.transform = `translate(${x * 0.22}px, ${y * 0.3}px)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
     });
   }
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-}
+  /* ---------- Hero memory-graph canvas ---------- */
+  const canvas = $('#graph');
+  if (canvas && !reduced) {
+    const ctx = canvas.getContext('2d');
+    let w, h, dpr, nodes = [], raf;
+    const pointer = { x: -9999, y: -9999 };
 
-/* ---------- Project Modal ---------- */
-function initProjectModal() {
-  const modal = document.querySelector('.modal');
-  const modalClose = document.querySelector('.modal-close');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  // Project data (you can expand this)
-  const projects = {
-    'project-1': {
-      title: 'Project One',
-      category: 'Web Development',
-      description: 'A beautifully designed web application that showcases modern design principles and cutting-edge technology. This project demonstrates expertise in front-end development with a focus on user experience and performance optimization.',
-      image: 'https://picsum.photos/900/400?random=1',
-      tech: ['HTML', 'CSS', 'JavaScript', 'React'],
-      liveUrl: '#',
-      codeUrl: '#'
-    },
-    'project-2': {
-      title: 'Project Two',
-      category: 'UI/UX Design',
-      description: 'An innovative user interface design that prioritizes accessibility and visual appeal. Created with a mobile-first approach and extensive user testing to ensure optimal usability across all devices.',
-      image: 'https://picsum.photos/900/400?random=2',
-      tech: ['Figma', 'Adobe XD', 'Prototyping'],
-      liveUrl: '#',
-      codeUrl: '#'
-    },
-    'project-3': {
-      title: 'Project Three',
-      category: 'Mobile App',
-      description: 'A cross-platform mobile application built with modern frameworks. Features include real-time synchronization, offline capabilities, and seamless integration with cloud services.',
-      image: 'https://picsum.photos/900/400?random=3',
-      tech: ['React Native', 'Firebase', 'Node.js'],
-      liveUrl: '#',
-      codeUrl: '#'
-    },
-    'project-4': {
-      title: 'Project Four',
-      category: 'Brand Identity',
-      description: 'Complete brand identity design including logo, color palette, typography, and brand guidelines. The design reflects the company\'s values of innovation and sustainability.',
-      image: 'https://picsum.photos/900/400?random=4',
-      tech: ['Illustrator', 'Photoshop', 'InDesign'],
-      liveUrl: '#',
-      codeUrl: '#'
-    },
-    'project-5': {
-      title: 'Project Five',
-      category: 'Web Development',
-      description: 'An e-commerce platform built from the ground up with a focus on performance and scalability. Includes custom shopping cart, payment integration, and admin dashboard.',
-      image: 'https://picsum.photos/900/400?random=5',
-      tech: ['Vue.js', 'Node.js', 'MongoDB', 'Stripe'],
-      liveUrl: '#',
-      codeUrl: '#'
-    },
-    'project-6': {
-      title: 'Project Six',
-      category: 'Interactive',
-      description: 'An interactive data visualization project that transforms complex datasets into engaging visual stories. Built with modern web technologies for optimal performance.',
-      image: 'https://picsum.photos/900/400?random=6',
-      tech: ['D3.js', 'Canvas', 'WebGL'],
-      liveUrl: '#',
-      codeUrl: '#'
+    function palette() {
+      return root.getAttribute('data-theme') === 'light'
+        ? { node: '109, 77, 214', line: '109, 77, 214' }
+        : { node: '185, 166, 255', line: '160, 190, 255' };
     }
-  };
 
-  // Open modal when clicking a project card
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const projectId = card.dataset.project;
-      const project = projects[projectId];
-
-      if (project && modal) {
-        // Populate modal content
-        modal.querySelector('.modal-image').src = project.image;
-        modal.querySelector('.modal-category').textContent = project.category;
-        modal.querySelector('.modal-title').textContent = project.title;
-        modal.querySelector('.modal-description').textContent = project.description;
-
-        // Populate tech tags
-        const techContainer = modal.querySelector('.modal-tech');
-        techContainer.innerHTML = project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
-
-        // Update links
-        const liveLink = modal.querySelector('.modal-links .btn-primary');
-        const codeLink = modal.querySelector('.modal-links .btn-secondary');
-        if (liveLink) liveLink.href = project.liveUrl;
-        if (codeLink) codeLink.href = project.codeUrl;
-
-        // Show modal
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-  });
-
-  // Close modal
-  function closeModal() {
-    modal?.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  modalClose?.addEventListener('click', closeModal);
-
-  // Close modal when clicking outside content
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.offsetWidth; h = canvas.offsetHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const density = Math.round((w * h) / 17000);
+      const count = Math.max(34, Math.min(110, density));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+        r: Math.random() * 1.5 + 0.7,
+        pulse: Math.random() * Math.PI * 2
+      }));
     }
-  });
 
-  // Close modal with Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal?.classList.contains('active')) {
-      closeModal();
-    }
-  });
-}
+    function draw() {
+      const pal = palette();
+      ctx.clearRect(0, 0, w, h);
+      const LINK = 132, PULL = 168;
 
-/* ---------- Portfolio Filter ---------- */
-function initPortfolioFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx; n.y += n.vy; n.pulse += 0.017;
+        if (n.x < -20) n.x = w + 20; if (n.x > w + 20) n.x = -20;
+        if (n.y < -20) n.y = h + 20; if (n.y > h + 20) n.y = -20;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Update active button
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-
-      // Filter projects
-      projectCards.forEach(card => {
-        const category = card.dataset.category;
-
-        if (filter === 'all' || category === filter) {
-          card.style.display = '';
-          card.style.animation = 'fadeUp 0.5s ease forwards';
-        } else {
-          card.style.display = 'none';
+        const dx = pointer.x - n.x, dy = pointer.y - n.y;
+        const pd = Math.hypot(dx, dy);
+        if (pd < PULL) {
+          const f = (1 - pd / PULL) * 0.018;
+          n.x += dx * f; n.y += dy * f;
         }
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const m = nodes[j];
+          const d = Math.hypot(n.x - m.x, n.y - m.y);
+          if (d < LINK) {
+            const near = Math.min(pd, Math.hypot(pointer.x - m.x, pointer.y - m.y));
+            const boost = near < PULL ? 1 - near / PULL : 0;
+            ctx.strokeStyle = `rgba(${pal.line}, ${(1 - d / LINK) * (0.10 + boost * 0.45)})`;
+            ctx.lineWidth = 0.6 + boost * 0.6;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y);
+            ctx.stroke();
+          }
+        }
+
+        const glow = pd < PULL ? 1 - pd / PULL : 0;
+        const a = 0.26 + Math.sin(n.pulse) * 0.14 + glow * 0.6;
+        ctx.fillStyle = `rgba(${pal.node}, ${a})`;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r + glow * 1.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(draw);
+    }
+
+    const hero = canvas.closest('.hero') || canvas.parentElement;
+    hero.addEventListener('pointermove', e => {
+      const r = canvas.getBoundingClientRect();
+      pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top;
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => { pointer.x = pointer.y = -9999; });
+
+    window.addEventListener('resize', () => { resize(); }, { passive: true });
+    resize(); draw();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(raf);
+      else { cancelAnimationFrame(raf); draw(); }
+    });
+  }
+
+  /* ---------- Portfolio filter ---------- */
+  const filters = $$('.filter');
+  if (filters.length) {
+    filters.forEach(btn => btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const f = btn.dataset.filter;
+      $$('.proj').forEach(p => {
+        const match = f === 'all' || (p.dataset.cat || '').split(' ').includes(f);
+        p.classList.toggle('gone', !match);
       });
+    }));
+  }
+
+  /* ---------- Copy to clipboard ---------- */
+  $$('[data-copy]').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      const txt = el.dataset.copy;
+      navigator.clipboard?.writeText(txt).then(
+        () => toast('Copied: ' + txt),
+        () => toast('Copy failed — ' + txt)
+      );
     });
   });
-}
 
-/* ---------- Page Transitions ---------- */
-function initPageTransitions() {
-  const transition = document.querySelector('.page-transition');
-  const links = document.querySelectorAll('a:not([href^="#"]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])');
+  /* ---------- Contact form → real mail draft (no fake success) ---------- */
+  const form = $('#contact-form');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const subject = encodeURIComponent(`Hello from ${name || 'your website'}`);
+      const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+      window.location.href = `mailto:hello@pierrewallin.com?subject=${subject}&body=${body}`;
+      toast('Opening your mail app…');
+    });
+  }
 
-  links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
+  /* ---------- Command palette ---------- */
+  const cmdk = $('.cmdk');
+  if (cmdk) {
+    const input = $('.cmdk-box input', cmdk);
+    const list = $('.cmdk-list', cmdk);
+    let sel = 0, results = [];
 
-      // Only animate for internal links
-      if (href && !href.startsWith('http') && !href.startsWith('//')) {
+    const base = [
+      { i: '◈', t: 'Home',          s: 'index.html',                    k: 'home start top' },
+      { i: '◆', t: 'Work',          s: 'portfolio.html',                k: 'work projects portfolio pearl build' },
+      { i: '✎', t: 'Writing',       s: 'blog.html',                     k: 'writing blog articles essays linkedin' },
+      { i: '☺', t: 'About',         s: 'about.html',                    k: 'about bio who pierre story' },
+      { i: '🦪', t: 'Ask Pearl',     s: 'action:pearl',                  k: 'pearl chat assistant ai ask talk' },
+      { i: '✉', t: 'Email Pierre',  s: 'mailto:hello@pierrewallin.com', k: 'email mail contact reach hello' },
+      { i: 'in', t: 'LinkedIn',     s: 'https://www.linkedin.com/in/pierre-e-wallin', k: 'linkedin social connect profile' },
+      { i: '☀', t: 'Toggle theme',  s: 'action:theme',                  k: 'theme dark light mode appearance' },
+      { i: '↑', t: 'Article — Three AIs, one soul', s: 'https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete', k: 'article soul three ais pearl read' },
+      { i: '↑', t: 'Article — The coffee problem',  s: 'https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae', k: 'article coffee memory atlas retrieval read' }
+    ];
+
+    function render(q) {
+      const term = q.trim().toLowerCase();
+      results = term
+        ? base.filter(x => (x.t + ' ' + x.k).toLowerCase().includes(term))
+        : base.slice();
+      sel = 0;
+      if (!results.length) { list.innerHTML = '<div class="cmdk-empty">Nothing here. Try “pearl”, “writing”, or “theme”.</div>'; return; }
+      list.innerHTML = results.map((r, i) => {
+        const hint = r.s.startsWith('action:') ? 'action' : r.s.startsWith('http') ? 'external' : r.s.startsWith('mailto') ? 'mail' : 'page';
+        return `<button class="cmdk-item${i === sel ? ' sel' : ''}" data-i="${i}">
+          <span class="ic">${r.i}</span><span>${r.t}</span><small>${hint}</small></button>`;
+      }).join('');
+    }
+
+    function run(r) {
+      close();
+      if (!r) return;
+      if (r.s === 'action:theme') return toggleTheme();
+      if (r.s === 'action:pearl') return window.Pearl && window.Pearl.open();
+      if (r.s.startsWith('http')) return window.open(r.s, '_blank', 'noopener');
+      window.location.href = r.s;
+    }
+
+    function open() {
+      cmdk.classList.add('open');
+      render('');
+      input.value = '';
+      setTimeout(() => input.focus(), 60);
+    }
+    function close() { cmdk.classList.remove('open'); }
+    window.pwPalette = open;
+
+    input.addEventListener('input', () => render(input.value));
+    list.addEventListener('click', e => {
+      const b = e.target.closest('.cmdk-item');
+      if (b) run(results[+b.dataset.i]);
+    });
+    cmdk.addEventListener('click', e => { if (e.target === cmdk) close(); });
+
+    input.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
-
-        transition?.classList.add('active');
-
-        setTimeout(() => {
-          window.location.href = href;
-        }, 400);
-      }
+        sel = (sel + (e.key === 'ArrowDown' ? 1 : -1) + results.length) % results.length;
+        $$('.cmdk-item', list).forEach((el, i) => el.classList.toggle('sel', i === sel));
+        $$('.cmdk-item', list)[sel]?.scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Enter') { e.preventDefault(); run(results[sel]); }
+      else if (e.key === 'Escape') close();
     });
-  });
 
-  // Remove transition class on page load
-  window.addEventListener('load', () => {
-    transition?.classList.remove('active');
-  });
-}
+    $$('[data-palette]').forEach(b => b.addEventListener('click', open));
 
-/* ---------- Scroll Reveal Animation ---------- */
-function initScrollReveal() {
-  const reveals = document.querySelectorAll('.reveal');
-
-  function checkReveal() {
-    const windowHeight = window.innerHeight;
-    const revealPoint = 100;
-
-    reveals.forEach(reveal => {
-      const revealTop = reveal.getBoundingClientRect().top;
-
-      if (revealTop < windowHeight - revealPoint) {
-        reveal.classList.add('active');
-      }
+    document.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); cmdk.classList.contains('open') ? close() : open(); }
+      if (e.key === 'Escape') close();
+      if (e.key === '/' && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) { e.preventDefault(); open(); }
     });
   }
 
-  // Check on scroll
-  window.addEventListener('scroll', checkReveal);
-
-  // Check on page load
-  checkReveal();
-}
-
-/* ---------- Utility Functions ---------- */
-
-// Debounce function for performance
-function debounce(func, wait = 10) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Throttle function for scroll events
-function throttle(func, limit = 100) {
-  let inThrottle;
-  return function executedFunction(...args) {
-    if (!inThrottle) {
-      func(...args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
+  /* ---------- Konami easter egg ---------- */
+  const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let pos = 0;
+  document.addEventListener('keydown', e => {
+    pos = (e.key === seq[pos] || e.key.toLowerCase() === seq[pos]) ? pos + 1 : 0;
+    if (pos === seq.length) {
+      pos = 0;
+      toast('🦪 Never gonna give you up — Pearl, 2026');
+      document.body.animate(
+        [{ filter: 'hue-rotate(0deg)' }, { filter: 'hue-rotate(360deg)' }],
+        { duration: 2200, iterations: 2 }
+      );
     }
-  };
-}
-
-/* ---------- Contact Form Handler ---------- */
-const contactForm = document.querySelector('.contact-form');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-
-    // Here you would typically send the data to a server
-    // For now, we'll just log it and show a success message
-    console.log('Form submitted:', data);
-
-    // Show success message (you can customize this)
-    const btn = contactForm.querySelector('.btn');
-    const originalText = btn.textContent;
-
-    btn.textContent = 'Message Sent!';
-    btn.style.background = 'var(--color-secondary)';
-
-    // Reset form
-    contactForm.reset();
-
-    // Reset button after 3 seconds
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.style.background = '';
-    }, 3000);
-  });
-}
-
-/* ---------- Typing Effect (Optional) ---------- */
-function typeWriter(element, text, speed = 100) {
-  let i = 0;
-  element.textContent = '';
-
-  function type() {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    }
-  }
-
-  type();
-}
-
-// Usage: typeWriter(document.querySelector('.hero-title'), 'Hello, World!', 100);
-
-/* ---------- Cursor Effect (Optional Enhancement) ---------- */
-function initCustomCursor() {
-  const cursor = document.createElement('div');
-  cursor.classList.add('custom-cursor');
-  document.body.appendChild(cursor);
-
-  const cursorFollower = document.createElement('div');
-  cursorFollower.classList.add('cursor-follower');
-  document.body.appendChild(cursorFollower);
-
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-
-    setTimeout(() => {
-      cursorFollower.style.left = e.clientX + 'px';
-      cursorFollower.style.top = e.clientY + 'px';
-    }, 100);
   });
 
-  // Enlarge cursor on hoverable elements
-  const hoverables = document.querySelectorAll('a, button, .project-card');
-  hoverables.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.classList.add('hover');
-      cursorFollower.classList.add('hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-      cursorFollower.classList.remove('hover');
-    });
-  });
-}
+  /* ---------- Year ---------- */
+  $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
-// Uncomment to enable custom cursor:
-// initCustomCursor();
-
-console.log('Website loaded successfully! ');
+  /* ---------- Console signature ---------- */
+  console.log(
+    '%c🦪 Pearl is listening.',
+    'font: 600 15px/1.6 ui-monospace, monospace; color:#b9a6ff;'
+  );
+  console.log(
+    '%cBuilt by Pierre Wallin · Atlanta · press ⌘K (or /) to navigate.',
+    'font: 12px/1.6 ui-monospace, monospace; color:#7dd3fc;'
+  );
+})();
