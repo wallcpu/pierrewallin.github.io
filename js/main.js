@@ -322,16 +322,18 @@
     let sel = 0, results = [];
 
     const base = [
-      { i: '◈', t: 'Home',          s: 'index.html',                    k: 'home start top' },
-      { i: '◆', t: 'Work',          s: 'portfolio.html',                k: 'work projects portfolio pearl build' },
-      { i: '✎', t: 'Writing',       s: 'blog.html',                     k: 'writing blog articles essays linkedin' },
-      { i: '☺', t: 'About',         s: 'about.html',                    k: 'about bio who pierre story' },
-      { i: '🦪', t: 'Ask Pearl',     s: 'action:pearl',                  k: 'pearl chat assistant ai ask talk' },
+      { i: '◈', t: 'Home',          s: '/',                             k: 'home start top' },
+      { i: '◐', t: 'The Album Atlas', s: '/music/',                     k: 'music albums atlas data viz visualization rotation crossing tree' },
+      { i: '✎', t: 'Writing',       s: '/blog.html',                    k: 'writing blog articles essays linkedin' },
+      { i: '☺', t: 'About',         s: '/about.html',                   k: 'about bio who pierre' },
       { i: '✉', t: 'Email Pierre',  s: 'mailto:hello@pierrewallin.com', k: 'email mail contact reach hello' },
       { i: 'in', t: 'LinkedIn',     s: 'https://www.linkedin.com/in/pierre-e-wallin', k: 'linkedin social connect profile' },
       { i: '☀', t: 'Toggle theme',  s: 'action:theme',                  k: 'theme dark light mode appearance' },
-      { i: '↑', t: 'Article — Three AIs, one soul', s: 'https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete', k: 'article soul three ais pearl read' },
-      { i: '↑', t: 'Article — The coffee problem',  s: 'https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae', k: 'article coffee memory atlas retrieval read' }
+      { i: '↗', t: 'Some Features My AI Assistant Does for Me, Ranked', s: 'https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae', k: 'essay article pearl features ranked' },
+      { i: '↗', t: 'The Night I Realized My AI Assistant Wasn’t Broken, My Instructions Were', s: 'https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye', k: 'essay article pearl instructions prompt' },
+      { i: '↗', t: 'Why My AI Assistant Keeps Forgetting I Don’t Drink Coffee', s: 'https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae', k: 'essay article pearl memory coffee' },
+      { i: '↗', t: 'Version 3.0 Is Loading: A Brief History of Underestimating Microsoft', s: 'https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe', k: 'essay article microsoft copilot history' },
+      { i: '↗', t: 'How I Used Three AIs to Build the Soul of a Fourth', s: 'https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete', k: 'essay article pearl soul three ais' }
     ];
 
     function render(q) {
@@ -340,7 +342,7 @@
         ? base.filter(x => (x.t + ' ' + x.k).toLowerCase().includes(term))
         : base.slice();
       sel = 0;
-      if (!results.length) { list.innerHTML = '<div class="cmdk-empty">Nothing here. Try “pearl”, “writing”, or “theme”.</div>'; return; }
+      if (!results.length) { list.innerHTML = '<div class="cmdk-empty">Nothing here. Try “music” or “writing”.</div>'; return; }
       list.innerHTML = results.map((r, i) => {
         const hint = r.s.startsWith('action:') ? 'action' : r.s.startsWith('http') ? 'external' : r.s.startsWith('mailto') ? 'mail' : 'page';
         return `<button class="cmdk-item${i === sel ? ' sel' : ''}" data-i="${i}">
@@ -352,7 +354,6 @@
       close();
       if (!r) return;
       if (r.s === 'action:theme') return toggleTheme();
-      if (r.s === 'action:pearl') return window.Pearl && window.Pearl.open();
       if (r.s.startsWith('http')) return window.open(r.s, '_blank', 'noopener');
       window.location.href = r.s;
     }
@@ -392,31 +393,6 @@
     });
   }
 
-  /* ---------- Konami easter egg ---------- */
-  const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-  let pos = 0;
-  document.addEventListener('keydown', e => {
-    pos = (e.key === seq[pos] || e.key.toLowerCase() === seq[pos]) ? pos + 1 : 0;
-    if (pos === seq.length) {
-      pos = 0;
-      toast('🦪 Never gonna give you up — Pearl, 2026');
-      document.body.animate(
-        [{ filter: 'hue-rotate(0deg)' }, { filter: 'hue-rotate(360deg)' }],
-        { duration: 2200, iterations: 2 }
-      );
-    }
-  });
-
   /* ---------- Year ---------- */
   $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
-
-  /* ---------- Console signature ---------- */
-  console.log(
-    '%c🦪 Pearl is listening.',
-    'font: 600 15px/1.6 ui-monospace, monospace; color:#b9a6ff;'
-  );
-  console.log(
-    '%cBuilt by Pierre Wallin · Atlanta · press ⌘K (or /) to navigate.',
-    'font: 12px/1.6 ui-monospace, monospace; color:#7dd3fc;'
-  );
 })();

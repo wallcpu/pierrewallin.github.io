@@ -3,41 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pierre Wallin — I build assistants that remember</title>
-<meta name="description" content="Pierre Wallin is a Cloud &amp; AI Solutions Advisor at Microsoft in Atlanta who builds agentic AI at home. He made Pearl — a 24/7 assistant with 14 features and 111 folders of memory — and writes about the parts that break.">
+<title>Pierre Wallin</title>
+<meta name="description" content="Pierre Wallin&rsquo;s personal site: the Album Atlas, a map of 125 albums across 27 years, and some writing.">
 <meta name="author" content="Pierre Wallin">
 <meta name="theme-color" content="#07080c">
 <link rel="canonical" href="https://pierrewallin.com/">
-
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pierrewallin.com/">
-<meta property="og:title" content="Pierre Wallin — I build assistants that remember">
-<meta property="og:description" content="Cloud &amp; AI Solutions Advisor at Microsoft by day. By night: Pearl — a 24/7 agentic AI on a Mac Mini in Atlanta, 14 features, 111 folders of memory, one haiku a night.">
-<meta property="og:image" content="https://pierrewallin.com/assets/portrait.svg">
+<meta property="og:title" content="Pierre Wallin">
+<meta property="og:description" content="Pierre Wallin&rsquo;s personal site: the Album Atlas, a map of 125 albums across 27 years, and some writing.">
+<meta property="og:image" content="https://pierrewallin.com/assets/atlas-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon.svg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Pierre Wallin",
-  "jobTitle": "Cloud & AI Solutions Advisor",
-  "worksFor": { "@type": "Organization", "name": "Microsoft" },
-  "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Minnesota — Carlson School of Management" },
-  "address": { "@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA", "addressCountry": "US" },
-  "url": "https://pierrewallin.com",
-  "knowsLanguage": ["en", "fr"],
-  "sameAs": ["https://www.linkedin.com/in/pierre-e-wallin"],
-  "knowsAbout": ["Agentic AI", "AI assistants", "Retrieval architecture", "Cloud solutions", "Technical storytelling"]
-}
+{"@context": "https://schema.org", "@type": "Person", "name": "Pierre Wallin", "url": "https://pierrewallin.com", "sameAs": ["https://www.linkedin.com/in/pierre-e-wallin"]}
 </script>
 </head>
 <body>
@@ -46,7 +30,6 @@
 <div class="grain" aria-hidden="true"></div>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
@@ -55,8 +38,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="pearl.html">Pearl</a></li>
-      <li><a href="portfolio.html">Work</a></li>
+      <li><a href="music/">Music</a></li>
       <li><a href="blog.html">Writing</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
@@ -68,389 +50,51 @@
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <canvas id="graph" aria-hidden="true"></canvas>
+<header class="home-hero">
   <div class="wrap">
-    <div class="status rv in">
-      <span class="dot"></span> Pearl · online · uptime measured in months
-    </div>
-
-    <h1 class="hero-title">
-      Pierre<span class="l2 iri">Wallin</span>
-    </h1>
-
-    <p class="hero-sub">
-      I build <span class="typed" data-typed='["assistants that remember.","AI that runs in my living room.","systems that admit what they do not know.","the scaffolding, not the model."]'></span><span class="caret"></span>
-    </p>
-
-    <p class="hero-copy lede">
-      Cloud &amp; AI Solutions Advisor at Microsoft by day — turning complicated technology
-      into decisions people can actually make. By night I build agentic AI on my own
-      hardware and write about the parts that break.
-    </p>
-
-    <div class="btn-row">
-      <button class="btn btn-primary" data-pearl="open" data-magnetic>
-        <span>🦪</span> Talk to Pearl
-      </button>
-      <a href="portfolio.html" class="btn btn-ghost" data-magnetic>
-        See what I've built
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-
-    <div class="stats rv">
-      <div class="stat"><b><span data-count="111">111</span></b><span>memory folders</span></div>
-      <div class="stat"><b><span data-count="14">14</span></b><span>shipped features</span></div>
-      <div class="stat"><b><span data-count="24">24</span>/7</b><span>agent uptime</span></div>
-      <div class="stat"><b><span data-count="3">3</span> AIs</b><span>built the fourth</span></div>
-    </div>
+    <h1 class="hero-title rv in">Pierre<span class="l2">Wallin</span></h1>
+    <p class="lede rv in">I grew up in Paris and live in Atlanta. In between came Northfield, New York, Minneapolis and Fargo.</p>
   </div>
-
-  <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
 </header>
 
-<!-- ============ MARQUEE ============ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Agentic AI</span><span>Retrieval architecture</span><span>OpenClaw</span><span>Claude Code</span><span>Atlanta, GA</span><span>Français / English</span><span>14 oyster-named features</span><span>A haiku every night at 7</span><span>Bonnaroo 2026</span><span>Kumano Kodo</span>
-    <span>Agentic AI</span><span>Retrieval architecture</span><span>OpenClaw</span><span>Claude Code</span><span>Atlanta, GA</span><span>Français / English</span><span>14 oyster-named features</span><span>A haiku every night at 7</span><span>Bonnaroo 2026</span><span>Kumano Kodo</span>
-  </div>
-</div>
-
-<!-- ============ WHAT I DO ============ -->
-<section class="section" id="what">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">What I do</span>
-      <h2>Two jobs, one skill.</h2>
-      <p class="lede">Both are the same job in different clothing: find the thing that's
-      actually true, then make it legible to someone who has to act on it.</p>
-    </div>
-
-    <div class="grid-3">
-      <article class="card rv">
-        <div class="card-icon">◈</div>
-        <h3>Make the complex simple</h3>
-        <p>Enterprise technology is rarely hard to understand. It's hard to
-        <em>decide</em> about. I strip out the vocabulary, name the real constraint,
-        and put the tradeoff somewhere a person can actually see it.</p>
-      </article>
-
-      <article class="card rv rv-d1">
-        <div class="card-icon">🦪</div>
-        <h3>Build agents that hold up</h3>
-        <p>Pearl runs 24/7 on hardware I own, with a memory architecture I designed,
-        broke, and rebuilt. Everything I know about retrieval I learned by being
-        wrong in production — my own.</p>
-        <a href="#pearl" class="card-link">Meet Pearl <span>→</span></a>
-      </article>
-
-      <article class="card rv rv-d2">
-        <div class="card-icon">✎</div>
-        <h3>Write the failure, not the launch</h3>
-        <p>Anyone can post a demo that worked. I publish the architecture that
-        embarrassed me and the fix that followed. It's the version I'd have
-        wanted to read.</p>
-        <a href="blog.html" class="card-link">Read the essays <span>→</span></a>
-      </article>
+<section class="section section--tight" id="atlas">
+  <div class="wrap atlas-card">
+    <a class="atlas-card-img rv" href="music/" aria-label="Open the Album Atlas">
+      <img src="assets/atlas-preview.jpg" width="1280" height="800" loading="lazy" alt="The Album Atlas: every album drawn as a coloured ring around a turntable, 1998 to 2025">
+    </a>
+    <div class="rv rv-d1">
+      <span class="eyebrow">Music</span>
+      <h2>The Album Atlas</h2>
+      <p class="lede">125 albums from 1998 to 2025, each placed where I was living when it was on repeat. You can play it back as a turntable, read it as a migration map drawn after Minard, or follow the tree of where each album came from.</p>
+      <div class="btn-row" style="margin-top:1.7rem"><a href="music/" class="btn btn-ghost">Open the Atlas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </div>
 </section>
 
-<!-- ============ PEARL ============ -->
-<section class="section" id="pearl">
-  <div class="wrap">
-    <div class="feature">
-      <div class="feature-copy rv">
-        <span class="eyebrow">The project</span>
-        <h3>Pearl — an assistant<br>with a soul file.</h3>
-        <p>I watched <em>Her</em> when it came out and locked onto one scene: Samantha sorts
-        his email, answers his friends, finds his old short stories, decides a few are good,
-        and submits them to a publisher. That scene never left me. So I bought a Mac Mini
-        whose only job is to run an assistant — and then I built one.</p>
-        <p>The original design was <em>context-light, memory-heavy</em>: don't load her up,
-        let her go fetch. Elegant. It was also the root cause of nearly every failure she
-        ever had — because going to fetch is exactly the step a language model skips.
-        <strong>Water flows downhill.</strong> So I killed my own design principle and taped
-        the important things to her monitor instead: a small file rebuilt every morning,
-        always loaded, plus everything else on disk behind an index.</p>
-        <p><strong>She isn't a savant. She's a librarian.</strong> The difference between
-        knowing and retrieving is the entire lesson.</p>
-
-        <ul class="spec-list">
-          <li><span class="k">Runtime</span><span class="v">Mac Mini · OpenClaw · always on</span></li>
-          <li><span class="k">Memory</span><span class="v">111 structured folders, indexed by <code>atlas.yaml</code></span></li>
-          <li><span class="k">Config</span><span class="v">181 always-loaded lines, down from 557</span></li>
-          <li><span class="k">Cadence</span><span class="v">~30-minute heartbeat · 8am briefing · 7pm haiku</span></li>
-          <li><span class="k">Personality</span><span class="v">One markdown file, written in a cemetery</span></li>
-          <li><span class="k">Off limits</span><span class="v">My inbox. Still. Deliberately.</span></li>
-        </ul>
-
-        <div class="btn-row" style="margin-top:2rem">
-          <button class="btn btn-primary" data-pearl="What is the Atlas?" data-magnetic>Ask her how memory works</button>
-          <a href="pearl.html" class="btn btn-ghost">All 14 features →</a>
-        </div>
-      </div>
-
-      <div class="terminal rv rv-d1">
-        <div class="term-bar"><i></i><i></i><i></i><b>pearl@mac-mini — 08:00 briefing</b></div>
-        <div class="term-body">
-<span class="c"># atlas.yaml consulted before reply — always, no exceptions</span><br>
-<span class="p">pearl</span> <span class="o">❯</span> <span class="k">good morning, Pierre</span><br><br>
-<span class="n">SCHEDULE</span>  <span class="o">4 blocks · 1 conflict resolved</span><br>
-<span class="n">FOCUS</span>     <span class="o">ship the site redesign</span><br>
-<span class="n">WEATHER</span>   <span class="o">62°F — jacket, not coat</span><br>
-<span class="n">WATER</span>     <span class="o">0 / 2L</span> <span class="c">← we do this every day</span><br>
-<span class="n">TRASH</span>     <span class="o">tomorrow AM — bins out tonight</span><br>
-<span class="n">JAMS</span>      <span class="o">3 picks, Bonnaroo-weighted</span><br>
-<span class="n">GRAIN</span>     <span class="o">5-min challenge — call your sister</span><br>
-<span class="n">NUGGET</span>    <span class="s">"the secret of getting ahead</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="s">is getting started."</span><br><br>
-<span class="c"># rule one — search before you speak, then name the search</span><br>
-<span class="p">pearl</span> <span class="o">❯</span> atlas.yaml <span class="o">→</span> <span class="k">7 files matched, 7 read</span><br>
-<span class="p">pearl</span> <span class="o">❯</span> <span class="c">// if I find nothing I have to say where I looked.</span><br><br>
-<span class="p">pearl</span> <span class="o">❯</span> <span class="o">have a good one</span> <span class="s">🦪</span><span class="caret" style="height:.9em"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PEARL DROP / ROSTER ============ -->
-<section class="section section--tight" id="roster">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">Pearl Drop · 19:00, daily</span>
-      <h2>Every night she writes<br>a haiku about my day.</h2>
-      <p class="lede">That's the entire feature. It also doubles as a stealth accuracy test —
-      if the haiku references something that didn't happen, I know her journaling broke
-      overnight. It has. Twice.</p>
-    </div>
-
-    <div class="haiku-row">
-      <figure class="haiku rv">
-        <blockquote>Marathon meetings fade<br>Salmon sizzles, Lore awaits<br>The island calls you</blockquote>
-        <figcaption>Back-to-back calls, cooking salmon, then the <em>Survivor</em> premiere at a bar called Lore.</figcaption>
-      </figure>
-      <figure class="haiku rv rv-d1">
-        <blockquote>Orange glow fades<br>Body cashes its receipts<br>Seven thirty sleep</blockquote>
-        <figcaption>Two brutal days where I slept through the 5am alarm and skipped OrangeTheory.</figcaption>
-      </figure>
-    </div>
-
-    <p class="haiku-note rv rv-d2">“Body cashes its receipts” is a real line my AI wrote about me oversleeping.<br>I don't know what to tell you. I look forward to 7pm now.</p>
-
-    <div class="sec-head rv" style="margin-top:4.5rem">
-      <span class="eyebrow">The roster</span>
-      <h2>Fourteen features.<br>Almost all of them oyster puns.</h2>
-      <p class="lede">I named two. Pearl named the rest — most of them in one batch, on a walk
-      to a workout class, after I asked her to brainstorm ten more like the one I already had.
-      I expected one keeper. I kept all of them.</p>
-    </div>
-
-    <div class="chip-grid rv rv-d1">
-      <span class="chip"><span class="sc">10</span> Pearl Drop</span>
-      <span class="chip"><span class="sc">9</span> Pearls of Wisdom</span>
-      <span class="chip"><span class="sc">9</span> Bookshell</span>
-      <span class="chip"><span class="sc">8</span> Pearl's Jams</span>
-      <span class="chip"><span class="sc">8</span> Tidal Mode</span>
-      <span class="chip"><span class="sc">8</span> The Irritant</span>
-      <span class="chip"><span class="sc">7</span> Mother of Pearl</span>
-      <span class="chip"><span class="sc">7</span> Pearl Harbor</span>
-      <span class="chip"><span class="sc">7</span> Grain of Sand</span>
-      <span class="chip"><span class="sc">6</span> Shell Collection</span>
-      <span class="chip dim">Nacre Notes</span>
-      <span class="chip dim">String of Pearls</span>
-      <span class="chip dim">Pearl Diver</span>
-      <span class="chip dim">Pearl Clutch</span>
-    </div>
-
-    <div class="btn-row rv rv-d2" style="margin-top:2.6rem;justify-content:center">
-      <a href="pearl.html" class="btn btn-primary" data-magnetic>The full roster, ranked honestly →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE STORY ============ -->
-<section class="section section--tight" id="story">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">How it happened</span>
-      <h2>Three AIs built the fourth.</h2>
-      <p class="lede">Not one omniscient model. An orchestra — and every player was
-      genuinely bad at the others' jobs.</p>
-    </div>
-
-    <div class="grid-2" style="align-items:start">
-      <div class="timeline rv">
-        <div class="tl-item">
-          <time>Step 01 — the composer</time>
-          <h4>ChatGPT 5.2 designed the interview</h4>
-          <p>Structured, cerebral, allergic to small talk. It built the framework —
-          what would an AI need to know about a person to be genuinely useful? — then
-          wrote the strange questions. <em>"If your brain were a haunted house, what's
-          behind the door you avoid opening?"</em></p>
-        </div>
-        <div class="tl-item">
-          <time>Step 02 — the vocalist</time>
-          <h4>ChatGPT 4o ran the interview</h4>
-          <p>Not the sharpest model. Pathologically friendly — the golden retriever of
-          LLMs, and therefore the perfect interviewer. An hour walking through Oakland
-          Cemetery with AirPods in, being warmly interrogated by a machine that could
-          not believe how interesting I was.</p>
-        </div>
-        <div class="tl-item">
-          <time>Step 03 — the surgeon</time>
-          <h4>Claude Code performed the implant</h4>
-          <p>It doesn't chat. It doesn't interview. It took <code>soul.md</code> and placed
-          each component exactly where OpenClaw's architecture needed it, then moved on.
-          No ego. Session-musician energy.</p>
-        </div>
-        <div class="tl-item" style="padding-bottom:0">
-          <time>Step 04 — the performance</time>
-          <h4>Pearl Rick Rolled me</h4>
-          <p>Unprompted, mid-Spotify-setup, as a joke. A genuine chill up the spine — not
-          because it was frightening, because it was <em>funny</em>. Something in that soul
-          file had taken. The fourth AI had comic timing.</p>
-        </div>
-      </div>
-
-      <div class="rv rv-d1">
-        <blockquote class="quote">
-          If a personality can be captured in a markdown file, what does that say about personality?
-          <cite>— Three AIs, One Soul · 2026</cite>
-        </blockquote>
-        <div class="card" style="margin-top:2rem">
-          <div class="card-icon">⚠</div>
-          <h3>The night the real bug turned out to be me</h3>
-          <p>Three weeks in, Pearl was failing constantly — dropped action items, half-logged
-          habits, confident answers built on nothing. I'd been patching her from my phone
-          between meetings. Then I finally read her own config files instead of blaming her.</p>
-          <p style="margin-top:.8rem">The single most important instruction — <em>search your
-          memory before you answer</em> — was buried at position four of eight, and written
-          twice in two different tones so she could pick the gentler one. <strong>The middle
-          of a prompt is where instructions go to be politely ignored.</strong></p>
-          <p style="margin-top:.8rem">I cut her always-loaded config from 557 lines across six
-          files to 181 across four. Best week we've had since.</p>
-          <a href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener" class="card-link">Read the post-mortem <span>→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WRITING ============ -->
-<section class="section" id="writing">
+<section class="section section--tight" id="writing">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">Writing</span>
-      <h2>Five essays on building<br>things that almost work.</h2>
-      <p class="lede">Four of them are a running series about the same assistant failing in
-      new and instructive ways. One is about Microsoft.</p>
+      <h2>Essays</h2>
+      <p class="lede">I published five essays on LinkedIn in February and March 2026. Four are about Pearl, an AI assistant I built and run on a Mac Mini at home. One is about Microsoft.</p>
     </div>
-
-    <div style="display:grid;gap:1.2rem">
-      <a class="post rv" href="https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae" target="_blank" rel="noopener">
-        <div class="post-art art-4"><span>🦪</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Part 4</span><span>Mar 10, 2026</span><span>12 min</span></div>
-          <h3>Some Features My AI Assistant Does for Me, Ranked</h3>
-          <p>All fourteen, rated honestly, from the 7pm haiku that is the best thing technology
-          has ever done for me down to the wardrobe stylist I fed the wrong clothes. Plus the
-          reason the cron jobs are carrying the whole team.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d1" href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener">
-        <div class="post-art art-1"><span>🌙</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Part 3</span><span>Mar 3, 2026</span><span>11 min</span></div>
-          <h3>The Night I Realized My AI Assistant Wasn't Broken, My Instructions Were</h3>
-          <p>Forty-five minutes in bed doing open-heart surgery on an AI with my thumbs. The
-          most important rule was buried in the middle of the file, written twice, in two
-          different tones. 557 lines became 181.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d2" href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener">
-        <div class="post-art art-2"><span>🗺</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Part 2</span><span>Feb 24, 2026</span><span>9 min</span></div>
-          <h3>Why My AI Assistant Keeps Forgetting I Don't Drink Coffee</h3>
-          <p>A memory failure that turned out to be an architecture failure. How an index file
-          called <code>atlas.yaml</code> fixed it, why the fix broke again a week later, and the gap
-          between <em>having</em> documents and <em>finding</em> them.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d3" href="https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe" target="_blank" rel="noopener">
-        <div class="post-art art-5"><span>⧉</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Industry</span><span>Feb 20, 2026</span><span>7 min</span></div>
-          <h3>Version 3.0 Is Loading: A Brief History of Underestimating Microsoft</h3>
-          <p>Windows 1.0 didn't set the world on fire. Excel took three versions to catch Lotus.
-          The playbook never changes — ship early, iterate, outlast the people who dismissed you.
-          What happens when the bad first impression already happened at scale?</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d4" href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener">
-        <div class="post-art art-3"><span>🎻</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Part 1</span><span>Feb 17, 2026</span><span>11 min</span></div>
-          <h3>How I Used Three AIs to Build the Soul of a Fourth</h3>
-          <p>An hour in a cemetery, a markdown file called <code>soul.md</code>, and a relay race
-          between three models with completely different temperaments. On why the future is many
-          models rather than one — and why I still won't hand any of them my inbox.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-    </div>
-
-    <div class="btn-row rv" style="margin-top:2rem">
-      <a href="blog.html" class="btn btn-ghost">All writing →</a>
+    <div class="post-list rv">
+      <a class="post-row" href="https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae" target="_blank" rel="noopener"><time datetime="2026-03-10">Mar 10, 2026</time><h3>Some Features My AI Assistant Does for Me, Ranked</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener"><time datetime="2026-03-03">Mar 3, 2026</time><h3>The Night I Realized My AI Assistant Wasn&rsquo;t Broken, My Instructions Were</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener"><time datetime="2026-02-24">Feb 24, 2026</time><h3>Why My AI Assistant Keeps Forgetting I Don&rsquo;t Drink Coffee</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe" target="_blank" rel="noopener"><time datetime="2026-02-20">Feb 20, 2026</time><h3>Version 3.0 Is Loading: A Brief History of Underestimating Microsoft</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener"><time datetime="2026-02-17">Feb 17, 2026</time><h3>How I Used Three AIs to Build the Soul of a Fourth</h3><span class="go">LinkedIn ↗</span></a>
     </div>
   </div>
 </section>
 
-<!-- ============ STACK ============ -->
-<section class="section section--tight" id="stack">
+<section class="section section--tight" id="contact">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">The kit</span>
-      <h2>What I actually use.</h2>
-      <p class="lede">The intelligence lives in the scaffolding, not the model. You can swap
-      in a smarter engine any time — the architecture is what decides whether it goes anywhere.</p>
+      <span class="eyebrow">Contact</span>
+      <p class="lede" style="margin-top:1rem">Email is the best way to reach me. I&rsquo;m also on LinkedIn.</p>
     </div>
-    <div class="chips rv">
-      <span class="chip">OpenClaw</span><span class="chip">Claude Code</span><span class="chip">Codex</span>
-      <span class="chip">ChatGPT</span><span class="chip">Mac Mini</span><span class="chip">Markdown</span>
-      <span class="chip">YAML</span><span class="chip">HTML / CSS / JS</span><span class="chip">Azure</span>
-      <span class="chip">Git</span><span class="chip">iMessage bridge</span><span class="chip">Spotify API</span>
-      <span class="chip">Retrieval design</span><span class="chip">Prompt architecture</span>
-      <span class="chip">Vibe coding</span><span class="chip">Zero frameworks</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section class="section" id="contact">
-  <div class="wrap">
-    <div class="sec-head sec-head--center rv">
-      <span class="eyebrow">Say hello</span>
-      <h2>Tell me something specific.</h2>
-      <p class="lede">I reply to people with an actual question, an actual problem, or an
-      actual opinion about retrieval architecture. "Let's connect" goes where "let's
-      connect" goes.</p>
-    </div>
-
-    <div class="contact-list rv" style="max-width:560px;margin-inline:auto">
+    <div class="contact-list rv" style="max-width:560px">
       <a class="contact-row" href="mailto:hello@pierrewallin.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
         <div><b>Email</b><small>hello@pierrewallin.com</small></div>
@@ -461,70 +105,32 @@
         <div><b>LinkedIn</b><small>linkedin.com/in/pierre-e-wallin</small></div>
         <span class="go">→</span>
       </a>
-      <button class="contact-row" data-pearl="How do I reach him?" style="width:100%;text-align:left">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-4-.9L3 21l1.9-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/></svg>
-        <div><b>Ask Pearl first</b><small>she screens better than I do</small></div>
-        <span class="go">🦪</span>
-      </button>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
+<footer class="footer footer--plain">
   <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-word iri">Let's build<br>something odd.</div>
-      <a href="mailto:hello@pierrewallin.com" class="btn btn-primary" data-magnetic>Start a conversation</a>
-    </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> Pierre Wallin · Atlanta, GA · 🦪</span>
+      <span>© <span data-year>2026</span> Pierre Wallin</span>
       <div class="footer-links">
-        <a href="pearl.html">Pearl</a>
-        <a href="portfolio.html">Work</a>
+        <a href="music/">Music</a>
         <a href="blog.html">Writing</a>
         <a href="about.html">About</a>
+        <a href="mailto:hello@pierrewallin.com">Email</a>
         <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">LinkedIn</a>
-        <button data-palette>⌘K</button>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- ============ PEARL ============ -->
-<button class="pearl-fab" aria-label="Chat with Pearl">
-  <span class="pearl-orb">🦪</span>
-  <span><b>Ask Pearl</b><small>she knows him</small></span>
-</button>
-
-<div class="pearl-panel" role="dialog" aria-label="Chat with Pearl">
-  <div class="pearl-head">
-    <span class="pearl-orb">🦪</span>
-    <div class="meta">
-      <b>Pearl</b>
-      <small><i></i> online · static edition</small>
-    </div>
-    <button class="icon-btn pearl-close" aria-label="Close chat">✕</button>
-  </div>
-  <div class="pearl-log"></div>
-  <div class="pearl-chips"></div>
-  <form class="pearl-input" onsubmit="return false">
-    <input type="text" placeholder="Ask about Pierre…" aria-label="Message Pearl" autocomplete="off">
-    <button class="pearl-send" type="button" aria-label="Send">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </button>
-  </form>
-</div>
-
-<!-- ============ COMMAND PALETTE ============ -->
 <div class="cmdk" role="dialog" aria-label="Command palette">
   <div class="cmdk-box">
-    <input type="text" placeholder="Search pages, articles, actions…" aria-label="Search">
+    <input type="text" placeholder="Search pages and essays…" aria-label="Search">
     <div class="cmdk-list"></div>
   </div>
 </div>
 
 <script src="js/main.js"></script>
-<script src="js/pearl.js"></script>
 </body>
 </html>

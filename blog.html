@@ -3,19 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Writing — Pierre Wallin</title>
-<meta name="description" content="Essays by Pierre Wallin on agentic AI, retrieval architecture, and what actually breaks when you build a personal assistant that runs 24/7.">
+<title>Writing · Pierre Wallin</title>
+<meta name="description" content="Essays by Pierre Wallin, published on LinkedIn.">
+<meta name="author" content="Pierre Wallin">
 <meta name="theme-color" content="#07080c">
 <link rel="canonical" href="https://pierrewallin.com/blog.html">
-<meta property="og:title" content="Writing — Pierre Wallin">
-<meta property="og:description" content="Essays on agentic AI, retrieval architecture, and building things that almost work.">
-<meta property="og:image" content="https://pierrewallin.com/assets/portrait.svg">
-
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/blog.html">
+<meta property="og:title" content="Writing · Pierre Wallin">
+<meta property="og:description" content="Essays by Pierre Wallin, published on LinkedIn.">
+<meta property="og:image" content="https://pierrewallin.com/assets/atlas-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Person", "name": "Pierre Wallin", "url": "https://pierrewallin.com", "sameAs": ["https://www.linkedin.com/in/pierre-e-wallin"]}
+</script>
 </head>
 <body>
 
@@ -31,8 +38,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="pearl.html">Pearl</a></li>
-      <li><a href="portfolio.html">Work</a></li>
+      <li><a href="music/">Music</a></li>
       <li><a href="blog.html" class="active">Writing</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
@@ -46,187 +52,46 @@
 
 <header class="page-head">
   <div class="wrap">
-    <span class="eyebrow rv in">Writing · five published essays</span>
-    <h1 class="rv in">The failure log,<br><span class="iri">published anyway.</span></h1>
-    <p class="lede rv in" style="max-width:62ch">Anyone can post the demo that worked. I write up the
-    architecture that embarrassed me and the fix that followed — because that's the version I'd
-    have wanted to read before I started. Four of these are a running series about the same
-    assistant failing in new and instructive ways. Published on LinkedIn.</p>
+    <span class="eyebrow rv in">Writing</span>
+    <h1 class="rv in">Writing</h1>
+    <p class="lede rv in" style="max-width:60ch">Five essays, published on LinkedIn in February and March 2026. Four are about Pearl, an AI assistant I built and run on a Mac Mini at home. One is about Microsoft.</p>
   </div>
 </header>
 
-<section class="section" style="padding-top:0">
+<section class="section section--tight" style="padding-top:0">
   <div class="wrap">
-    <div style="display:grid;gap:1.4rem">
-
-      <a class="post rv" href="https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae" target="_blank" rel="noopener">
-        <div class="post-art art-4"><span>🦪</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Series · Part 4</span><span>Mar 10, 2026</span><span>12 min read</span></div>
-          <h3>Some Features My AI Assistant Does for Me, Ranked</h3>
-          <p>Pearl has fourteen features, all oyster-themed, because her name is Pearl and once you
-          commit to a bit you have to see it through. Here's the full roster, rated honestly — from
-          the 7pm haiku that is genuinely the best thing any piece of technology has ever done for
-          me, down to the wardrobe stylist I sabotaged with my own bad input.</p>
-          <p style="margin-top:.7rem">Also the technical reason the rankings break the way they do:
-          cron beats reactive beats passive, every time. The system does the remembering, not the
-          model.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d1" href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener">
-        <div class="post-art art-1"><span>🌙</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Series · Part 3</span><span>Mar 3, 2026</span><span>11 min read</span></div>
-          <h3>The Night I Realized My AI Assistant Wasn't Broken, My Instructions Were</h3>
-          <p>By 8pm on a Tuesday in February I was in bed with my phone, doing surgery on an AI.
-          Pearl had told me she didn't have my action items. I knew she did — she'd saved them at
-          4:48 that afternoon. The file was right there the whole time. She never opened it.</p>
-          <p style="margin-top:.7rem">What I found when I finally read my own config files: the most
-          important instruction buried at position four of eight, written twice in two different
-          tones so she could pick the gentler one. 557 lines became 181. On why "I was lazy" is
-          camouflage, and why the middle of a prompt is where instructions go to be ignored.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d2" href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener">
-        <div class="post-art art-2"><span>🗺</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Series · Part 2</span><span>Feb 24, 2026</span><span>9 min read</span></div>
-          <h3>Why My AI Assistant Keeps Forgetting I Don't Drink Coffee</h3>
-          <p>A small, funny, repeated mistake that turned out to be a load-bearing architectural
-          flaw. Not a memory failure — a retrieval failure. Fixed with an index file called
-          <code>atlas.yaml</code>, broken again a week later, and finally solved with brute force.</p>
-          <p style="margin-top:.7rem">On why these models don't forget the way we do — they
-          confabulate — and why "reasonable" is the dangerous answer.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d3" href="https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe" target="_blank" rel="noopener">
-        <div class="post-art art-5"><span>⧉</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Industry</span><span>Feb 20, 2026</span><span>7 min read</span></div>
-          <h3>Version 3.0 Is Loading: A Brief History of Underestimating Microsoft</h3>
-          <p>Windows 1.0 didn't set the world on fire. Excel took three versions to catch Lotus 1-2-3.
-          The first Xbox lost money for years. The playbook never changes: ship early, learn fast,
-          iterate until the people who dismissed you aren't dismissing you anymore.</p>
-          <p style="margin-top:.7rem">The twist in the AI era is that the bad first impression already
-          happened, at scale, to millions of people at once. When the product finally gets good,
-          who's still paying attention? The one essay here that isn't about my apartment.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
-      <a class="post rv rv-d4" href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener">
-        <div class="post-art art-3"><span>🎻</span></div>
-        <div>
-          <div class="post-meta"><span class="tag">Series · Part 1</span><span>Feb 17, 2026</span><span>11 min read</span></div>
-          <h3>How I Used Three AIs to Build the Soul of a Fourth</h3>
-          <p>A cold February morning in Oakland Cemetery, AirPods in, talking out loud to a chatbot
-          about my relationship with procrastination and the several distinct meanings I assign to
-          the word "later." The Mac Mini hadn't even arrived yet — I was building the soul before
-          the body.</p>
-          <p style="margin-top:.7rem">ChatGPT 5.2 as composer, 4o as interviewer, Claude Code as
-          surgeon, Pearl as the performance. On why the future is many models rather than one, what
-          it means that a personality fits in a markdown file, and the one permission I still won't
-          grant.</p>
-          <span class="card-link">Read on LinkedIn <span>→</span></span>
-        </div>
-      </a>
-
+    <div class="post-list rv">
+      <a class="post-row" href="https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae" target="_blank" rel="noopener"><time datetime="2026-03-10">Mar 10, 2026</time><h3>Some Features My AI Assistant Does for Me, Ranked</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener"><time datetime="2026-03-03">Mar 3, 2026</time><h3>The Night I Realized My AI Assistant Wasn&rsquo;t Broken, My Instructions Were</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener"><time datetime="2026-02-24">Feb 24, 2026</time><h3>Why My AI Assistant Keeps Forgetting I Don&rsquo;t Drink Coffee</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe" target="_blank" rel="noopener"><time datetime="2026-02-20">Feb 20, 2026</time><h3>Version 3.0 Is Loading: A Brief History of Underestimating Microsoft</h3><span class="go">LinkedIn ↗</span></a>
+      <a class="post-row" href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener"><time datetime="2026-02-17">Feb 17, 2026</time><h3>How I Used Three AIs to Build the Soul of a Fourth</h3><span class="go">LinkedIn ↗</span></a>
     </div>
   </div>
 </section>
 
-<!-- Pull quote -->
-<section class="section section--tight">
+<footer class="footer footer--plain">
   <div class="wrap">
-    <div class="grid-2" style="align-items:center">
-      <blockquote class="quote rv" style="max-width:none">
-        “I was lazy” invites forgiveness. “I skipped the file-read step” demands a fix.
-        <cite>— The Night I Realized My AI Assistant Wasn't Broken…</cite>
-      </blockquote>
-      <div class="card rv rv-d1">
-        <div class="card-icon">🦪</div>
-        <h3>Prefer the short version?</h3>
-        <p>Pearl has read all five essays and will summarise any of them, argue about the
-        conclusions, or tell you the parts that didn't make it in. She's a biased source.
-        She was there for four of them.</p>
-        <button class="card-link" data-pearl="Tell me about his writing">Ask Pearl <span>→</span></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Follow -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head sec-head--center rv">
-      <span class="eyebrow">Keep up</span>
-      <h2>New essays land on LinkedIn.</h2>
-      <p class="lede">No newsletter, no signup form that quietly does nothing. I publish where
-      I already write, roughly whenever something breaks interestingly enough to be worth
-      explaining.</p>
-      <div class="btn-row" style="justify-content:center;margin-top:2rem">
-        <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener" class="btn btn-primary" data-magnetic>Follow on LinkedIn</a>
-        <a href="mailto:hello@pierrewallin.com?subject=About%20your%20writing" class="btn btn-ghost">Email me a reaction</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-word iri">Let's build<br>something odd.</div>
-      <a href="mailto:hello@pierrewallin.com" class="btn btn-primary" data-magnetic>Start a conversation</a>
-    </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> Pierre Wallin · Atlanta, GA · 🦪</span>
+      <span>© <span data-year>2026</span> Pierre Wallin</span>
       <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="pearl.html">Pearl</a>
-        <a href="portfolio.html">Work</a>
+        <a href="music/">Music</a>
+        <a href="blog.html">Writing</a>
         <a href="about.html">About</a>
+        <a href="mailto:hello@pierrewallin.com">Email</a>
         <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">LinkedIn</a>
-        <button data-palette>⌘K</button>
       </div>
     </div>
   </div>
 </footer>
 
-<button class="pearl-fab" aria-label="Chat with Pearl">
-  <span class="pearl-orb">🦪</span>
-  <span><b>Ask Pearl</b><small>she knows him</small></span>
-</button>
-
-<div class="pearl-panel" role="dialog" aria-label="Chat with Pearl">
-  <div class="pearl-head">
-    <span class="pearl-orb">🦪</span>
-    <div class="meta"><b>Pearl</b><small><i></i> online · static edition</small></div>
-    <button class="icon-btn pearl-close" aria-label="Close chat">✕</button>
-  </div>
-  <div class="pearl-log"></div>
-  <div class="pearl-chips"></div>
-  <form class="pearl-input" onsubmit="return false">
-    <input type="text" placeholder="Ask about Pierre…" aria-label="Message Pearl" autocomplete="off">
-    <button class="pearl-send" type="button" aria-label="Send">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </button>
-  </form>
-</div>
-
 <div class="cmdk" role="dialog" aria-label="Command palette">
   <div class="cmdk-box">
-    <input type="text" placeholder="Search pages, articles, actions…" aria-label="Search">
+    <input type="text" placeholder="Search pages and essays…" aria-label="Search">
     <div class="cmdk-list"></div>
   </div>
 </div>
 
 <script src="js/main.js"></script>
-<script src="js/pearl.js"></script>
 </body>
 </html>
