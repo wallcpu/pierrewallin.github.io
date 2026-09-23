@@ -1189,3 +1189,31 @@ strong { color: var(--ink); font-weight: 600; }
 .persona .swatch { width: 100%; height: 5px; border-radius: 99px; margin-bottom: 1.1rem; }
 .persona h4 { font-size: 1.05rem; margin-bottom: .5rem; }
 .persona p { font-size: .88rem; line-height: 1.65; color: var(--ink-soft); }
+
+/* ============================================================
+   30 · Personal site (2026): home, writing list, about
+   ============================================================ */
+.home-hero { padding-top: calc(var(--nav-h) + clamp(4.5rem, 13vw, 10rem)); padding-bottom: clamp(2.5rem, 7vw, 5rem); position: relative; z-index: 1; }
+.home-hero .hero-title { margin-bottom: 1.7rem; }
+.home-hero .lede { max-width: 44ch; font-size: clamp(1.15rem, 2.3vw, 1.45rem); line-height: 1.6; }
+.atlas-card { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.6rem, 4.5vw, 3.6rem); align-items: center; }
+.atlas-card-img { display: block; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); background: #07080c; aspect-ratio: 16 / 10; box-shadow: 0 40px 90px -46px rgba(0,0,0,.95); }
+.atlas-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.atlas-card-img:hover img { transform: scale(1.035); }
+.atlas-card h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.3rem, 5vw, 3.8rem); letter-spacing: -.03em; line-height: 1; margin: .8rem 0 1.1rem; }
+.post-list { display: grid; border-top: 1px solid var(--line); }
+.post-row { display: grid; grid-template-columns: 8.5rem 1fr auto; gap: 1.4rem; align-items: baseline; padding: 1.2rem .3rem; border-bottom: 1px solid var(--line); transition: background .3s var(--ease), padding .3s var(--ease); }
+.post-row:hover { background: color-mix(in srgb, var(--bg-elev) 75%, transparent); padding-inline: .9rem; }
+.post-row time { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); }
+.post-row h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.2rem, 2.4vw, 1.6rem); letter-spacing: -.015em; line-height: 1.22; color: var(--ink); }
+.post-row .go { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; color: var(--ink-mute); white-space: nowrap; }
+.post-row:hover .go { color: var(--ink); }
+.prose p { max-width: 60ch; font-size: 1.08rem; line-height: 1.75; }
+.prose p + p { margin-top: 1.15rem; }
+.prose p a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.prose p a:hover { text-decoration-color: var(--ink); }
+.portrait--blank { background: var(--bg-elev); }
+.portrait--blank::after { display: none; }
+.footer--plain .footer-bottom { border-top: 0; padding-top: 0; }
+@media (max-width: 860px) { .atlas-card { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .post-row { grid-template-columns: 1fr; gap: .35rem; } .post-row .go { display: none; } }

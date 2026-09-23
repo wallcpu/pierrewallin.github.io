@@ -1,0 +1,5 @@
+# private: the handoff brief, the raw album data, and the build that encrypts the memories
+_brief/
+_atlas/
+# personal photos are not published yet
+assets/pierre-*.jpg

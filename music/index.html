@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>Music · Pierre Wallin</title>
+<meta name="description" content="The Album Atlas: 125 albums from 1998 to 2025, mapped by time, place and memory. Three ways to look at the same data.">
+<meta name="author" content="Pierre Wallin">
+<meta name="theme-color" content="#07080c">
+<link rel="canonical" href="https://pierrewallin.com/music/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/music/">
+<meta property="og:title" content="The Album Atlas">
+<meta property="og:description" content="125 albums from 1998 to 2025, mapped by time, place and memory.">
+<meta property="og:image" content="https://pierrewallin.com/assets/atlas-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="music/music.css">
+</head>
+<body class="music">
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">PW</span>
+      <span class="brand-text">Pierre Wallin<span> / Atlanta</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="music/" class="active">Music</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Search</button>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="atlas-head">
+  <div class="atlas-title">
+    <p class="atlas-eyebrow">Music · 1998 – 2025</p>
+    <h1>The Album Atlas</h1>
+    <p class="atlas-stats" id="atlasStats">125 albums · 27 years · 7 chapters · 12 places · 202 memories</p>
+    <div class="atlas-lock" id="atlasLock">
+      <button class="lock-btn" id="lockBtn" type="button" aria-expanded="false" aria-controls="lockPop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path class="shackle" d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg>
+        <span class="lock-label">Memories are private</span>
+      </button>
+      <div class="lock-pop" id="lockPop" hidden>
+        <div class="when-locked">
+          <p>The memories written for these albums are private. If you have the passphrase, type it here.</p>
+          <form class="lock-form" data-lock-form>
+            <input type="password" name="pass" placeholder="Passphrase" aria-label="Passphrase" autocomplete="current-password" autocapitalize="off" spellcheck="false">
+            <button type="submit" class="ctl">Unlock</button>
+          </form>
+          <p class="lock-msg" aria-live="polite"></p>
+        </div>
+        <div class="when-open">
+          <p>The memories are showing on this device.</p>
+          <button type="button" class="ctl" data-relock>Lock them again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="atlas-switch">
+    <div class="atlas-tabs" role="tablist" aria-label="Views">
+      <button role="tab" data-view="rotation" aria-selected="true">Heavy Rotation</button>
+      <button role="tab" data-view="crossing" aria-selected="false">The Crossing</button>
+      <button role="tab" data-view="tree" aria-selected="false">The Listening Tree</button>
+    </div>
+    <p class="atlas-desc" id="atlasDesc"></p>
+  </div>
+</header>
+
+<main class="stage" id="stage">
+  <section class="view view-rotation" data-view="rotation" aria-label="Heavy Rotation"></section>
+  <section class="view view-crossing" data-view="crossing" aria-label="The Crossing"></section>
+  <section class="view view-tree" data-view="tree" aria-label="The Listening Tree"></section>
+</main>
+
+<aside class="mem" id="mem" aria-hidden="true" aria-label="Album memories">
+  <div class="mem-inner"></div>
+</aside>
+<div class="mem-scrim" id="memScrim"></div>
+<div class="atlas-tip" id="atlasTip" role="tooltip"></div>
+<div class="sr-only" aria-live="polite" id="atlasLive"></div>
+
+<footer class="atlas-foot">
+  <span>© <span data-year>2026</span> Pierre Wallin</span>
+  <span class="atlas-foot-note">Covers via the Cover Art Archive. Temperatures are climate normals for context, not measurements.</span>
+</footer>
+
+<div class="cmdk" role="dialog" aria-label="Command palette">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search pages, articles, actions…" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="music/data/atlas.js"></script>
+<script src="music/data/memories.enc.js"></script>
+<script src="js/main.js"></script>
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+<script src="music/js/atlas-core.js"></script>
+<script src="music/js/atlas-lock.js"></script>
+<script src="music/js/view-rotation.js"></script>
+<script src="music/js/view-crossing.js"></script>
+<script src="music/js/view-tree.js"></script>
+<script src="music/js/app.js"></script>
+</body>
+</html>
