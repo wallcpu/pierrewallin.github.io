@@ -10,23 +10,26 @@
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- Theme ---------- */
-  const THEME_KEY = 'pw-theme';
+  const THEME_KEY = 'pw-theme-v2';
   const root = document.documentElement;
+  let paletteCache = null;
 
-  function applyTheme(t) {
+  function applyTheme(t, persist) {
     root.setAttribute('data-theme', t);
-    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+    paletteCache = null;
+    if (persist) { try { localStorage.setItem(THEME_KEY, t); } catch (e) {} }
     $$('.js-theme-icon').forEach(el => { el.textContent = t === 'light' ? '☾' : '☀'; });
+    window.dispatchEvent(new Event('pw-theme'));
   }
   function toggleTheme() {
     const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    if (document.startViewTransition && !reduced) document.startViewTransition(() => applyTheme(next));
-    else applyTheme(next);
+    if (document.startViewTransition && !reduced) { const vt = document.startViewTransition(() => applyTheme(next, true)); vt.ready.catch(() => {}); }
+    else applyTheme(next, true);
   }
   (function initTheme() {
     let saved = null;
     try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
-    applyTheme(saved || 'dark');
+    applyTheme(saved || root.getAttribute('data-theme') || 'light');
   })();
   window.pwToggleTheme = toggleTheme;
 
@@ -111,22 +114,32 @@
     targets.forEach(t => so.observe(t));
   }
 
-  /* ---------- Typed subtitle ---------- */
+  /* ---------- Typed line (optionally tied to an album: its colour becomes the page accent) ---------- */
   const typedEl = $('[data-typed]');
-  if (typedEl && !reduced) {
-    const words = JSON.parse(typedEl.getAttribute('data-typed'));
-    let wi = 0, ci = 0, deleting = false;
-    (function tick() {
-      const w = words[wi];
-      ci += deleting ? -1 : 1;
-      typedEl.textContent = w.slice(0, ci);
-      let delay = deleting ? 38 : 72;
-      if (!deleting && ci === w.length) { delay = 1900; deleting = true; }
-      else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 320; }
-      setTimeout(tick, delay);
-    })();
-  } else if (typedEl) {
-    typedEl.textContent = JSON.parse(typedEl.getAttribute('data-typed'))[0];
+  if (typedEl) {
+    const words = JSON.parse(typedEl.getAttribute('data-typed')).map(w => (typeof w === 'string' ? { t: w } : w));
+    const host = typedEl.parentElement;
+    const cover = host.querySelector('.typed-cover');
+    words.forEach(w => { if (w.c) { const im = new Image(); im.src = w.c; } });
+    const tint = w => {
+      if (w.a) { root.style.setProperty('--accent', w.a); root.style.setProperty('--accent-ink', w.k || w.a); }
+      if (cover && w.c) { cover.classList.add('swap'); setTimeout(() => { cover.src = w.c; cover.classList.remove('swap'); }, 180); }
+    };
+    if (reduced) { typedEl.textContent = words[0].t; tint(words[0]); }
+    else {
+      let wi = 0, ci = 0, deleting = false;
+      tint(words[0]);
+      (function tick() {
+        const w = words[wi].t;
+        ci += deleting ? -1 : 1;
+        typedEl.textContent = w.slice(0, ci);
+        host.dataset.typing = 'on';
+        let delay = deleting ? 26 : 46 + Math.random() * 38;
+        if (!deleting && ci === w.length) { delay = 2600; deleting = true; host.dataset.typing = 'hold'; }
+        else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; tint(words[wi]); delay = 380; host.dataset.typing = 'hold'; }
+        setTimeout(tick, delay);
+      })();
+    }
   }
 
   /* ---------- Count up ---------- */
@@ -152,27 +165,42 @@
     counters.forEach(el => co.observe(el));
   }
 
-  /* ---------- Custom cursor + magnetic ---------- */
+  /* ---------- Custom cursor (with labels) + magnetic + weight-follows-cursor ---------- */
+  window.pwCursor = () => {};
   if (fine && !reduced) {
     const dot = document.createElement('div'); dot.className = 'cursor';
     const ring = document.createElement('div'); ring.className = 'cursor-ring';
+    const label = document.createElement('span'); label.className = 'cursor-label';
+    ring.appendChild(label);
     document.body.append(dot, ring);
-    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+    let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, forced = false;
 
     window.addEventListener('pointermove', e => {
       mx = e.clientX; my = e.clientY;
       dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+      ring.classList.toggle('flip', mx > innerWidth - 360);
     }, { passive: true });
 
     (function loop() {
-      rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+      rx += (mx - rx) * 0.2; ry += (my - ry) * 0.2;
       ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
       requestAnimationFrame(loop);
     })();
 
+    const setLabel = t => { label.textContent = t || ''; ring.classList.toggle('has-label', !!t); };
     document.addEventListener('pointerover', e => {
-      ring.classList.toggle('hot', !!e.target.closest('a, button, input, textarea, .chip, .card, .post'));
+      if (forced) return;
+      const tagged = e.target.closest('[data-cursor]');
+      ring.classList.toggle('hot', !!e.target.closest('a, button, input, textarea, [data-cursor]'));
+      setLabel(tagged ? tagged.dataset.cursor : '');
     });
+    document.addEventListener('pointerleave', () => { ring.classList.add('away'); });
+    document.addEventListener('pointerenter', () => { ring.classList.remove('away'); });
+    window.pwCursor = t => {
+      forced = !!t;
+      ring.classList.toggle('hot', !!t);
+      setLabel(t || '');
+    };
 
     $$('[data-magnetic]').forEach(el => {
       el.addEventListener('pointermove', e => {
@@ -183,19 +211,56 @@
       });
       el.addEventListener('pointerleave', () => { el.style.transform = ''; });
     });
+
+    $$('[data-weight-hover]').forEach(el => {
+      const letters = [];
+      [...el.childNodes].forEach(node => {
+        if (node.nodeType !== 3) return;
+        const frag = document.createDocumentFragment();
+        [...node.textContent].forEach(ch => { const s = document.createElement('span'); s.textContent = ch; s.className = 'wl'; frag.appendChild(s); letters.push(s); });
+        node.replaceWith(frag);
+      });
+      el.setAttribute('aria-label', el.textContent);
+      const lo = parseFloat(getComputedStyle(el).fontWeight) || 500, hi = 900, reach = 260;
+      let pending = false;
+      window.addEventListener('pointermove', () => {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(() => {
+          pending = false;
+          for (const s of letters) {
+            const r = s.getBoundingClientRect();
+            const d = Math.hypot(mx - (r.left + r.width / 2), my - (r.top + r.height / 2));
+            const k = Math.max(0, 1 - d / reach);
+            s.style.fontWeight = Math.round(lo + (hi - lo) * k * k);
+          }
+        });
+      }, { passive: true });
+    });
   }
 
-  /* ---------- Hero memory-graph canvas ---------- */
+  /* ---------- Hero canvas: the albums as a drifting network that leans toward the pointer ---------- */
   const canvas = $('#graph');
-  if (canvas && !reduced) {
+  if (canvas) {
     const ctx = canvas.getContext('2d');
-    let w, h, dpr, nodes = [], raf;
-    const pointer = { x: -9999, y: -9999 };
+    const hero = canvas.closest('.hero') || canvas.parentElement;
+    const albums = JSON.parse(canvas.dataset.albums || '[]');
+    let w, h, dpr, nodes = [], raf, hover = null, quiet = [];
+    const pointer = { x: -9999, y: -9999, live: false };
+    const inQuiet = n => quiet.some(q => n.x > q[0] && n.x < q[2] && n.y > q[1] && n.y < q[3]);
+    function measureQuiet() {
+      const c = canvas.getBoundingClientRect();
+      quiet = $$('.hero-sub, .hero-copy, .btn-row, .hero-hint', hero).map(el => {
+        const r = el.getBoundingClientRect();
+        return [r.left - c.left - 14, r.top - c.top - 12, r.right - c.left + 14, r.bottom - c.top + 12];
+      });
+    }
 
     function palette() {
-      return root.getAttribute('data-theme') === 'light'
-        ? { node: '109, 77, 214', line: '109, 77, 214' }
-        : { node: '185, 166, 255', line: '160, 190, 255' };
+      if (paletteCache) return paletteCache;
+      const v = k => getComputedStyle(root).getPropertyValue(k).trim().replace(/^["']|["']$/g, '');
+      paletteCache = { line: v('--graph-line') || '255, 255, 255', alpha: parseFloat(v('--graph-alpha')) || 1, light: root.getAttribute('data-theme') === 'light' };
+      return paletteCache;
     }
 
     function resize() {
@@ -203,73 +268,85 @@
       w = canvas.offsetWidth; h = canvas.offsetHeight;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const density = Math.round((w * h) / 17000);
-      const count = Math.max(34, Math.min(110, density));
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: (Math.random() - 0.5) * 0.22,
-        r: Math.random() * 1.5 + 0.7,
-        pulse: Math.random() * Math.PI * 2
+      const src = albums.length ? albums : Array.from({ length: 80 }, (_, i) => [0, '#888888', 3, '']);
+      const small = w < 700;
+      nodes = src.filter((a, i) => !small || a[2] <= 2 || i % 3 === 0).map(([id, col, rank, name, colL]) => ({
+        id, col, colL: colL || col, name,
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.24, vy: (Math.random() - 0.5) * 0.24,
+        r: rank === 1 ? 4.6 : rank === 2 ? 3.5 : rank === 3 ? 2.7 : 2.1,
+        pulse: Math.random() * Math.PI * 2,
       }));
     }
 
-    function draw() {
+    let frame = 0;
+    function step() {
       const pal = palette();
+      if ((frame++ & 31) === 0) measureQuiet();
       ctx.clearRect(0, 0, w, h);
-      const LINK = 132, PULL = 168;
-
+      const LINK = 118, PULL = 170;
+      for (const n of nodes) {
+        if (!reduced) {
+          n.x += n.vx; n.y += n.vy; n.pulse += 0.016;
+          if (n.x < -20) n.x = w + 20; if (n.x > w + 20) n.x = -20;
+          if (n.y < -20) n.y = h + 20; if (n.y > h + 20) n.y = -20;
+          const dx = pointer.x - n.x, dy = pointer.y - n.y, pd = Math.hypot(dx, dy);
+          if (pd < PULL && n !== hover) { const f = (1 - pd / PULL) * 0.016; n.x += dx * f; n.y += dy * f; }
+        }
+        n.pd = Math.hypot(pointer.x - n.x, pointer.y - n.y);
+        n.q = n.q === undefined ? (inQuiet(n) ? 1 : 0) : n.q + ((inQuiet(n) ? 1 : 0) - n.q) * 0.08;
+      }
+      ctx.lineWidth = 1;
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
-        n.x += n.vx; n.y += n.vy; n.pulse += 0.017;
-        if (n.x < -20) n.x = w + 20; if (n.x > w + 20) n.x = -20;
-        if (n.y < -20) n.y = h + 20; if (n.y > h + 20) n.y = -20;
-
-        const dx = pointer.x - n.x, dy = pointer.y - n.y;
-        const pd = Math.hypot(dx, dy);
-        if (pd < PULL) {
-          const f = (1 - pd / PULL) * 0.018;
-          n.x += dx * f; n.y += dy * f;
-        }
-
         for (let j = i + 1; j < nodes.length; j++) {
-          const m = nodes[j];
-          const d = Math.hypot(n.x - m.x, n.y - m.y);
-          if (d < LINK) {
-            const near = Math.min(pd, Math.hypot(pointer.x - m.x, pointer.y - m.y));
-            const boost = near < PULL ? 1 - near / PULL : 0;
-            ctx.strokeStyle = `rgba(${pal.line}, ${(1 - d / LINK) * (0.10 + boost * 0.45)})`;
-            ctx.lineWidth = 0.6 + boost * 0.6;
-            ctx.beginPath();
-            ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y);
-            ctx.stroke();
-          }
+          const m = nodes[j], d = Math.hypot(n.x - m.x, n.y - m.y);
+          if (d > LINK) continue;
+          const near = Math.min(n.pd, m.pd), boost = near < PULL ? 1 - near / PULL : 0;
+          const hush = 1 - Math.max(n.q, m.q) * 0.9;
+          ctx.strokeStyle = `rgba(${pal.line}, ${(1 - d / LINK) * (0.07 + boost * 0.38) * pal.alpha * hush})`;
+          ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y); ctx.stroke();
         }
-
-        const glow = pd < PULL ? 1 - pd / PULL : 0;
-        const a = 0.26 + Math.sin(n.pulse) * 0.14 + glow * 0.6;
-        ctx.fillStyle = `rgba(${pal.node}, ${a})`;
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r + glow * 1.8, 0, Math.PI * 2);
-        ctx.fill();
       }
-      raf = requestAnimationFrame(draw);
+      for (const n of nodes) {
+        const glow = n.pd < PULL ? 1 - n.pd / PULL : 0;
+        ctx.globalAlpha = Math.min(1, (pal.light ? 0.8 : 0.55) + Math.sin(n.pulse) * 0.12 + glow * 0.45) * (1 - n.q * 0.86);
+        ctx.fillStyle = pal.light ? n.colL : n.col;
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r + glow * 1.6 + (n === hover ? 3 : 0), 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      if (hover) {
+        ctx.strokeStyle = `rgba(${pal.line}, .9)`;
+        ctx.beginPath(); ctx.arc(hover.x, hover.y, hover.r + 8, 0, Math.PI * 2); ctx.stroke();
+      }
+      if (!reduced) raf = requestAnimationFrame(step);
     }
 
-    const hero = canvas.closest('.hero') || canvas.parentElement;
-    hero.addEventListener('pointermove', e => {
+    function pick(e) {
+      if (!pointer.live || e.target.closest('h1, p, a, button')) return null;
+      let best = null, bd = 16;
+      for (const n of nodes) { if (!n.name) continue; const d = Math.hypot(pointer.x - n.x, pointer.y - n.y) - n.r; if (d < bd) { bd = d; best = n; } }
+      return best;
+    }
+    const track = e => {
       const r = canvas.getBoundingClientRect();
-      pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top;
-    }, { passive: true });
-    hero.addEventListener('pointerleave', () => { pointer.x = pointer.y = -9999; });
+      pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top; pointer.live = true;
+      const n = pick(e);
+      if (n !== hover) { hover = n; window.pwCursor(n ? n.name : ''); hero.classList.toggle('on-node', !!n); if (reduced) step(); }
+    };
+    hero.addEventListener('pointermove', track, { passive: true });
+    hero.addEventListener('pointerdown', track, { passive: true });
+    hero.addEventListener('pointerleave', () => { pointer.x = pointer.y = -9999; pointer.live = false; if (hover) { hover = null; window.pwCursor(''); hero.classList.remove('on-node'); } });
+    hero.addEventListener('click', e => { if (hover && hover.id && !e.target.closest('a, button')) location.href = `music/?album=${hover.id}`; });
 
-    window.addEventListener('resize', () => { resize(); }, { passive: true });
-    resize(); draw();
-
+    let rt;
+    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { resize(); measureQuiet(); if (reduced) step(); }, 120); }, { passive: true });
+    window.addEventListener('pw-theme', () => { if (reduced) step(); });
+    resize(); measureQuiet(); step();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { measureQuiet(); if (reduced) step(); });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) cancelAnimationFrame(raf);
-      else { cancelAnimationFrame(raf); draw(); }
+      cancelAnimationFrame(raf);
+      if (!document.hidden) step();
     });
   }
 

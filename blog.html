@@ -1,93 +1,105 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" style="--accent:#57afc7;--accent-ink:#306d7e">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Writing · Pierre Wallin</title>
+<title>Writing by Pierre Wallin</title>
 <meta name="description" content="Essays by Pierre Wallin, published on LinkedIn.">
 <meta name="author" content="Pierre Wallin">
-<meta name="theme-color" content="#07080c">
 <link rel="canonical" href="https://pierrewallin.com/blog.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pierrewallin.com/blog.html">
-<meta property="og:title" content="Writing · Pierre Wallin">
+<meta property="og:title" content="Writing by Pierre Wallin">
 <meta property="og:description" content="Essays by Pierre Wallin, published on LinkedIn.">
 <meta property="og:image" content="https://pierrewallin.com/assets/atlas-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/favicon.svg">
+<script>(function(){try{var t=localStorage.getItem('pw-theme-v2');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Person", "name": "Pierre Wallin", "url": "https://pierrewallin.com", "sameAs": ["https://www.linkedin.com/in/pierre-e-wallin"]}
 </script>
 </head>
-<body>
-
-<div class="progress"></div>
-<div class="grain" aria-hidden="true"></div>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<body class="site">
+<div class="progress" aria-hidden="true"></div>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <span class="brand-mark">PW</span>
-      <span class="brand-text">Pierre Wallin<span> / Atlanta</span></span>
-    </a>
+    <a href="index.html" class="brand">Pierre Wallin</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
       <li><a href="music/">Music</a></li>
-      <li><a href="blog.html" class="active">Writing</a></li>
+      <li><a href="blog.html" class="active" aria-current="page">Writing</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="kbd-hint" data-palette aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Search</button>
-      <button class="icon-btn js-theme" onclick="pwToggleTheme()" aria-label="Toggle colour theme"><span class="js-theme-icon">☀</span></button>
-      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="icon-btn js-theme" onclick="pwToggleTheme()" aria-label="Switch between light and dark"><span class="js-theme-icon">&#9728;</span></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
 <header class="page-head">
   <div class="wrap">
-    <span class="eyebrow rv in">Writing</span>
-    <h1 class="rv in">Writing</h1>
-    <p class="lede rv in" style="max-width:60ch">Five essays, published on LinkedIn in February and March 2026. Four are about Pearl, an AI assistant I built and run on a Mac Mini at home. One is about Microsoft.</p>
+    <h1>Writing</h1>
+    <p class="lede">Five essays, published on LinkedIn in February and March 2026. Four are about Pearl, an AI assistant I built and run on a Mac Mini at home. One is about Microsoft.</p>
   </div>
 </header>
 
-<section class="section section--tight" style="padding-top:0">
+<section class="section section--flush">
   <div class="wrap">
-    <div class="post-list rv">
-      <a class="post-row" href="https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae" target="_blank" rel="noopener"><time datetime="2026-03-10">Mar 10, 2026</time><h3>Some Features My AI Assistant Does for Me, Ranked</h3><span class="go">LinkedIn ↗</span></a>
-      <a class="post-row" href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener"><time datetime="2026-03-03">Mar 3, 2026</time><h3>The Night I Realized My AI Assistant Wasn&rsquo;t Broken, My Instructions Were</h3><span class="go">LinkedIn ↗</span></a>
-      <a class="post-row" href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener"><time datetime="2026-02-24">Feb 24, 2026</time><h3>Why My AI Assistant Keeps Forgetting I Don&rsquo;t Drink Coffee</h3><span class="go">LinkedIn ↗</span></a>
-      <a class="post-row" href="https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe" target="_blank" rel="noopener"><time datetime="2026-02-20">Feb 20, 2026</time><h3>Version 3.0 Is Loading: A Brief History of Underestimating Microsoft</h3><span class="go">LinkedIn ↗</span></a>
-      <a class="post-row" href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener"><time datetime="2026-02-17">Feb 17, 2026</time><h3>How I Used Three AIs to Build the Soul of a Fourth</h3><span class="go">LinkedIn ↗</span></a>
+    <div class="posts">
+      <a class="post" href="https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae" target="_blank" rel="noopener" data-cursor="Read">
+        <time datetime="2026-03-10">Mar 10, 2026</time>
+        <h3>Some Features My AI Assistant Does for Me, Ranked</h3>
+        <span class="post-go">LinkedIn</span>
+      </a>
+      <a class="post" href="https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye" target="_blank" rel="noopener" data-cursor="Read">
+        <time datetime="2026-03-03">Mar 3, 2026</time>
+        <h3>The Night I Realized My AI Assistant Wasn&rsquo;t Broken, My Instructions Were</h3>
+        <span class="post-go">LinkedIn</span>
+      </a>
+      <a class="post" href="https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae" target="_blank" rel="noopener" data-cursor="Read">
+        <time datetime="2026-02-24">Feb 24, 2026</time>
+        <h3>Why My AI Assistant Keeps Forgetting I Don&rsquo;t Drink Coffee</h3>
+        <span class="post-go">LinkedIn</span>
+      </a>
+      <a class="post" href="https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe" target="_blank" rel="noopener" data-cursor="Read">
+        <time datetime="2026-02-20">Feb 20, 2026</time>
+        <h3>Version 3.0 Is Loading: A Brief History of Underestimating Microsoft</h3>
+        <span class="post-go">LinkedIn</span>
+      </a>
+      <a class="post" href="https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete" target="_blank" rel="noopener" data-cursor="Read">
+        <time datetime="2026-02-17">Feb 17, 2026</time>
+        <h3>How I Used Three AIs to Build the Soul of a Fourth</h3>
+        <span class="post-go">LinkedIn</span>
+      </a>
     </div>
   </div>
 </section>
 
-<footer class="footer footer--plain">
+<footer class="footer">
   <div class="wrap">
+    <p class="footer-lede">Say hello</p>
+    <a class="footer-word" href="mailto:hello@pierrewallin.com" data-magnetic data-cursor="Write">hello@pierrewallin.com</a>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> Pierre Wallin</span>
+      <span>&copy; <span data-year>2026</span> Pierre Wallin</span>
       <div class="footer-links">
         <a href="music/">Music</a>
         <a href="blog.html">Writing</a>
         <a href="about.html">About</a>
-        <a href="mailto:hello@pierrewallin.com">Email</a>
         <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
 </footer>
 
-<div class="cmdk" role="dialog" aria-label="Command palette">
+<div class="cmdk" role="dialog" aria-label="Search the site">
   <div class="cmdk-box">
-    <input type="text" placeholder="Search pages and essays…" aria-label="Search">
+    <input type="text" placeholder="Search pages and essays" aria-label="Search">
     <div class="cmdk-list"></div>
   </div>
 </div>
