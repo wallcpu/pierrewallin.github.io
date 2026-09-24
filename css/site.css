@@ -192,6 +192,7 @@ h2 { font-size: clamp(46px, 6.6vw, 104px); font-weight: 720; line-height: .9; le
 .post time { font-size: 15.5px; color: var(--mute); white-space: nowrap; }
 .post h3 { font-size: clamp(20px, 2.05vw, 28px); font-weight: 600; letter-spacing: -.022em; line-height: 1.2; transition: color .2s; }
 .post-go { font-size: 15px; color: var(--mute); }
+.post-go--ai { color: var(--fg); white-space: nowrap; }
 .post:hover { padding-left: 14px; }
 .post:hover h3 { color: var(--tone); }
 .post.gone { display: none; }
@@ -227,6 +228,25 @@ h2 { font-size: clamp(46px, 6.6vw, 104px); font-weight: 720; line-height: .9; le
 
 .nf { min-height: 86svh; display: flex; align-items: flex-end; padding: 150px 0 120px; }
 .nf .lede { margin-top: 28px; }
+
+/* ---------- a story written by AI: its own format, kept as it came ---------- */
+.story-page { padding: 150px 0 24px; }
+.ai-note, .story-head, .story, .story-back { max-width: 680px; margin-left: auto; margin-right: auto; }
+.ai-note { margin-bottom: 76px; padding-bottom: 24px; border-bottom: 1px solid var(--line); font-size: 16.5px; line-height: 1.55; color: var(--mute); }
+.ai-note b { color: var(--fg); font-weight: 650; }
+.story-head { margin-bottom: 52px; padding-bottom: 38px; border-bottom: 1px solid var(--line); text-align: center; }
+.story-head h1 { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: clamp(36px, 4.6vw, 54px); line-height: 1.12; letter-spacing: -.01em; }
+.story-kicker { margin-top: 16px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+.story { font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 1.8; color: rgba(255, 255, 255, .88); }
+[data-theme="light"] .story { color: rgba(0, 0, 0, .86); }
+.story p { margin: 0 0 .75em; }
+.story p + p { text-indent: 1.5em; }
+.story hr { height: auto; margin: 2.3em 0; border: 0; text-align: center; overflow: visible; }
+.story hr::after { content: "\2022\2003\2022\2003\2022"; font-size: 13px; color: var(--faint); }
+.story .fin { margin-top: 2.6em; text-align: center; text-indent: 0; font-size: 21px; color: var(--mute); }
+.story-back { margin-top: 72px; font-size: 16px; }
+.story-back a { color: var(--mute); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: var(--line-strong); transition: color .15s, text-decoration-color .15s; }
+.story-back a:hover { color: var(--fg); text-decoration-color: var(--tone); }
 
 /* ---------- footer ---------- */
 .footer { padding: clamp(104px, 12vw, 168px) 0 38px; border-top: 1px solid var(--line); }
@@ -306,7 +326,11 @@ h2 { font-size: clamp(46px, 6.6vw, 104px); font-weight: 720; line-height: .9; le
   .view-card:first-child p { margin-top: 8px; }
   .post { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 22px 0; }
   .post-go { display: none; }
+  .post-go--ai { display: block; font-size: 14px; }
   .post:hover { padding-left: 0; }
+  .story-page { padding-top: 112px; }
+  .ai-note { margin-bottom: 56px; font-size: 15.5px; }
+  .story { font-size: 18px; line-height: 1.75; }
   .about-grid { grid-template-columns: minmax(0, 1fr); }
   .page-head { padding: 140px 0 44px; }
 }
