@@ -1,103 +1,101 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" style="--accent:#57afc7;--accent-ink:#306d7e">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About · Pierre Wallin</title>
+<title>About Pierre Wallin</title>
 <meta name="description" content="About Pierre Wallin.">
 <meta name="author" content="Pierre Wallin">
-<meta name="theme-color" content="#07080c">
 <link rel="canonical" href="https://pierrewallin.com/about.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pierrewallin.com/about.html">
-<meta property="og:title" content="About · Pierre Wallin">
+<meta property="og:title" content="About Pierre Wallin">
 <meta property="og:description" content="About Pierre Wallin.">
 <meta property="og:image" content="https://pierrewallin.com/assets/atlas-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/favicon.svg">
+<script>(function(){try{var t=localStorage.getItem('pw-theme-v2');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Person", "name": "Pierre Wallin", "url": "https://pierrewallin.com", "sameAs": ["https://www.linkedin.com/in/pierre-e-wallin"]}
 </script>
 </head>
-<body>
-
-<div class="progress"></div>
-<div class="grain" aria-hidden="true"></div>
-<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<body class="site">
+<div class="progress" aria-hidden="true"></div>
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <span class="brand-mark">PW</span>
-      <span class="brand-text">Pierre Wallin<span> / Atlanta</span></span>
-    </a>
+    <a href="index.html" class="brand">Pierre Wallin</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
       <li><a href="music/">Music</a></li>
       <li><a href="blog.html">Writing</a></li>
-      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="about.html" class="active" aria-current="page">About</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="kbd-hint" data-palette aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Search</button>
-      <button class="icon-btn js-theme" onclick="pwToggleTheme()" aria-label="Toggle colour theme"><span class="js-theme-icon">☀</span></button>
-      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="icon-btn js-theme" onclick="pwToggleTheme()" aria-label="Switch between light and dark"><span class="js-theme-icon">&#9728;</span></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
 <header class="page-head">
   <div class="wrap">
-    <span class="eyebrow rv in">About</span>
-    <h1 class="rv in">Pierre Wallin</h1>
+    <h1>About</h1>
   </div>
 </header>
 
-<section class="section section--tight" style="padding-top:0">
+<section class="section section--flush">
   <div class="wrap about-grid">
-    <div class="portrait portrait--blank rv" aria-hidden="true"></div>
-    <div class="prose rv rv-d1">
+    <div>
+      <div class="mosaic" aria-hidden="true"><img src="music/covers/71.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/74.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/89.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/8.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/72.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/7.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/75.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/9.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/43.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/10.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/33.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/51.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/99.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/14.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/69.jpg" width="80" height="80" alt="" loading="lazy"><img src="music/covers/123.jpg" width="80" height="80" alt="" loading="lazy"></div>
+      <dl class="factoids">
+        <div class="factoid"><dt>Lives in</dt><dd>Atlanta</dd></div>
+        <div class="factoid"><dt>Grew up in</dt><dd>Paris</dd></div>
+        <div class="factoid"><dt>Languages</dt><dd>French, English</dd></div>
+        <div class="factoid"><dt>Studied</dt><dd>Carleton College, then an MBA in Minneapolis</dd></div>
+        <div class="factoid"><dt>Works at</dt><dd>Microsoft</dd></div>
+      </dl>
+    </div>
+    <div class="prose">
       <p>I&rsquo;m French-American. I grew up in Paris.</p>
       <p>I went to Carleton College in Northfield, Minnesota, then moved to New York for my first job. After that came an MBA in Minneapolis, a few years in Fargo, and now Atlanta. I work at Microsoft.</p>
       <p>Outside of work I build things at home. Pearl is an AI assistant that runs on a Mac Mini, and I wrote a few <a href="blog.html">essays</a> about building it. Data visualization is one of my favorite things, which is how the <a href="music/">Album Atlas</a> happened.</p>
-      <div class="contact-list" style="max-width:520px;margin-top:2.4rem">
-      <a class="contact-row" href="mailto:hello@pierrewallin.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        <div><b>Email</b><small>hello@pierrewallin.com</small></div>
-        <span class="go">→</span>
-      </a>
-      <a class="contact-row" href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05A4.2 4.2 0 0 1 17.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21h-4V9Z"/></svg>
-        <div><b>LinkedIn</b><small>linkedin.com/in/pierre-e-wallin</small></div>
-        <span class="go">→</span>
-      </a>
-      </div>
+
+      <form class="contact-form" id="contact-form">
+        <h2>Write to me</h2>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" rows="5" required></textarea></div>
+        <button class="btn btn-solid" type="submit" data-magnetic data-cursor="Send">Open it in my mail app</button>
+        <p class="form-note">This opens your own email app with the message filled in. Nothing is stored here.</p>
+      </form>
     </div>
   </div>
 </section>
 
-<footer class="footer footer--plain">
+<footer class="footer">
   <div class="wrap">
+    <p class="footer-lede">Say hello</p>
+    <a class="footer-word" href="mailto:hello@pierrewallin.com" data-magnetic data-cursor="Write">hello@pierrewallin.com</a>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> Pierre Wallin</span>
+      <span>&copy; <span data-year>2026</span> Pierre Wallin</span>
       <div class="footer-links">
         <a href="music/">Music</a>
         <a href="blog.html">Writing</a>
         <a href="about.html">About</a>
-        <a href="mailto:hello@pierrewallin.com">Email</a>
         <a href="https://www.linkedin.com/in/pierre-e-wallin" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
 </footer>
 
-<div class="cmdk" role="dialog" aria-label="Command palette">
+<div class="cmdk" role="dialog" aria-label="Search the site">
   <div class="cmdk-box">
-    <input type="text" placeholder="Search pages and essays…" aria-label="Search">
+    <input type="text" placeholder="Search pages and essays" aria-label="Search">
     <div class="cmdk-list"></div>
   </div>
 </div>
