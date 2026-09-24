@@ -402,6 +402,7 @@
       { i: '◈', t: 'Home',          s: '/',                             k: 'home start top' },
       { i: '◐', t: 'The Album Atlas', s: '/music/',                     k: 'music albums atlas data viz visualization rotation crossing tree' },
       { i: '✎', t: 'Writing',       s: '/blog.html',                    k: 'writing blog articles essays linkedin' },
+      { i: '¶', t: 'The Weight of Stones (written by AI)', s: '/writing/the-weight-of-stones/', k: 'story fiction ai written by ai experiment stones japan kumano trail' },
       { i: '☺', t: 'About',         s: '/about.html',                   k: 'about bio who pierre' },
       { i: '✉', t: 'Email Pierre',  s: 'mailto:hello@pierrewallin.com', k: 'email mail contact reach hello' },
       { i: 'in', t: 'LinkedIn',     s: 'https://www.linkedin.com/in/pierre-e-wallin', k: 'linkedin social connect profile' },
