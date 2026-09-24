@@ -173,10 +173,10 @@
       <div class="hr-notes"></div>
       <div class="hr-start">
         <button class="hr-play" aria-label="Play 27 years"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></button>
-        <b>Play 27 years</b><small>about three minutes · sound on</small>
+        <b>Play 27 years</b><small>About three minutes, sound on</small>
         <button class="quiet">or watch without sound</button>
       </div>
-      <div class="hr-end"><b>Twenty-seven years, one exposure.</b><span>every ring is an album · brighter means it came around more often</span></div>
+      <div class="hr-end"><b>Twenty-seven years, one exposure.</b><span>Every ring is an album. Brighter means it came around more often.</span></div>
       <div class="hr-dock">
         <div class="hr-strip"><canvas></canvas></div>
         <div class="hr-ctls">
@@ -187,7 +187,7 @@
           <button class="ctl" data-c="restart">↺ From 1998</button>
           <button class="ctl" data-c="solo" hidden></button>
           <span class="spacer"></span>
-          <span class="hint">space · ← →</span>
+          <span class="hint"><kbd>Space</kbd> <kbd>&larr;</kbd> <kbd>&rarr;</kbd></span>
         </div>
       </div>`;
     cv = el.querySelector('.hr-canvas'); cx2 = cv.getContext('2d');
@@ -236,7 +236,7 @@
       const r = cv.getBoundingClientRect(), mx = ev.clientX - r.left, my = ev.clientY - r.top;
       hover = pick(mx, my);
       cv.style.cursor = hover ? 'pointer' : 'default';
-      A.tip(hover, ev.clientX, ev.clientY, hover ? A.seasonLabel(Math.max(hover.t0, Math.min(t, hover.t1 - .01))) + ' · ' + (hover.intensity || 'medium') + ' rotation' : '');
+      A.tip(hover, ev.clientX, ev.clientY, hover ? A.seasonLabel(Math.max(hover.t0, Math.min(t, hover.t1 - .01))) + ', ' + (hover.intensity || 'medium') + ' rotation' : '');
     });
     cv.addEventListener('pointerleave', () => { hover = null; A.tip(null); });
     cv.addEventListener('click', () => {
@@ -491,7 +491,7 @@
     const n = queue.shift();
     const box = document.createElement('div');
     box.className = 'hr-note';
-    box.innerHTML = `${n.shape ? `<em>${A.esc(n.text)}</em>` : `<q>${A.esc(n.text)}</q>`}<span>${A.esc(n.a.title)} · ${A.esc(n.a.artist)}</span>`;
+    box.innerHTML = `${n.shape ? `<em>${A.esc(n.text)}</em>` : `<q>${A.esc(n.text)}</q>`}<span>${A.esc(n.a.title)}, ${A.esc(n.a.artist)}</span>`;
     ui.notes.appendChild(box);
     requestAnimationFrame(() => box.classList.add('show'));
     const hold = 3600 / Math.sqrt(SPEEDS[speedIx]);
@@ -626,7 +626,7 @@
     const { y, s } = A.seasonOf(Math.min(t, T1 - .001));
     const ph = A.phaseAt(t), home = A.placeLabel(A.homeAt(t));
     ui.year.textContent = y;
-    ui.season.textContent = `${s} · ${home}`;
+    ui.season.textContent = `${s}, ${home}`;
     ui.phase.textContent = ph.name;
     ui.count.innerHTML = `<b>${active.length}</b> ${active.length === 1 ? 'album' : 'albums'} in rotation`;
     if (lastPhase !== ph.n) { lastPhase = ph.n; document.getElementById('atlasLive').textContent = `${ph.name}, ${home}, ${y}`; }

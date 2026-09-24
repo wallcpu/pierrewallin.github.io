@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <base href="/">
-<title>Music · Pierre Wallin</title>
+<title>The Album Atlas</title>
 <meta name="description" content="The Album Atlas: 125 albums from 1998 to 2025, mapped by time, place and memory. Three ways to look at the same data.">
 <meta name="author" content="Pierre Wallin">
 <meta name="theme-color" content="#07080c">
@@ -18,38 +18,32 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<!-- The page is set in Schibsted Grotesk like the rest of the site. The three views draw their own labels in Instrument Serif, Inter and JetBrains Mono. -->
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="music/music.css">
 </head>
 <body class="music">
 
-<div class="grain" aria-hidden="true"></div>
-
 <nav class="nav is-stuck">
   <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <span class="brand-mark">PW</span>
-      <span class="brand-text">Pierre Wallin<span> / Atlanta</span></span>
-    </a>
+    <a href="/" class="brand">Pierre Wallin</a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="music/" class="active">Music</a></li>
+      <li><a href="music/" class="active" aria-current="page">Music</a></li>
       <li><a href="blog.html">Writing</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="kbd-hint" data-palette aria-label="Open command palette"><kbd>⌘</kbd><kbd>K</kbd> Search</button>
-      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
 <header class="atlas-head">
   <div class="atlas-title">
-    <p class="atlas-eyebrow">Music · 1998 – 2025</p>
     <h1>The Album Atlas</h1>
-    <p class="atlas-stats" id="atlasStats">125 albums · 27 years · 7 chapters · 12 places · 202 memories</p>
+    <p class="atlas-stats" id="atlasStats">125 albums, 27 years, 7 chapters, 12 places and 202 memories.</p>
     <div class="atlas-lock" id="atlasLock">
       <button class="lock-btn" id="lockBtn" type="button" aria-expanded="false" aria-controls="lockPop">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path class="shackle" d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg>
@@ -99,9 +93,9 @@
   <span class="atlas-foot-note">Covers via the Cover Art Archive. Temperatures are climate normals for context, not measurements.</span>
 </footer>
 
-<div class="cmdk" role="dialog" aria-label="Command palette">
+<div class="cmdk" role="dialog" aria-label="Search the site">
   <div class="cmdk-box">
-    <input type="text" placeholder="Search pages, articles, actions…" aria-label="Search">
+    <input type="text" placeholder="Search the site" aria-label="Search">
     <div class="cmdk-list"></div>
   </div>
 </div>
