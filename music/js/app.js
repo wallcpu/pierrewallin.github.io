@@ -14,7 +14,7 @@
 
   const s = A.D.stats;
   document.getElementById('atlasStats').textContent =
-    `${s.albums} albums · 27 years · ${A.D.phases.length} chapters · ${s.places} places · ${s.memories} memories`;
+    `${s.albums} albums, 27 years, ${A.D.phases.length} chapters, ${s.places} places and ${s.memories} memories.`;
   const stage = document.getElementById('stage');
   const fit = () => document.documentElement.style.setProperty('--hr-top', Math.round(stage.getBoundingClientRect().top + scrollY) + 'px');
   fit(); addEventListener('resize', fit); document.fonts && document.fonts.ready.then(fit);

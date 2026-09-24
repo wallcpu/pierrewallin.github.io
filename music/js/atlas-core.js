@@ -12,7 +12,7 @@
   const seasonLabel = t => { const { y, s } = seasonOf(t); return `${s} ${y}`; };
   function spanLabel(sp) {
     const a = seasonLabel(sp.t0), b = seasonLabel(sp.t1 - 0.25);
-    return a === b ? a : `${a} → ${b}`;
+    return a === b ? a : `${a} to ${b}`;
   }
   const phaseAt = t => D.phases.find(p => p.t0 <= t && t < p.t1) || (t < D.phases[0].t0 ? D.phases[0] : D.phases[D.phases.length - 1]);
   function homeAt(t) {
@@ -111,8 +111,8 @@
       const list = anchorsInSpan.length ? anchorsInSpan : [an];
       const away = list.filter(x => x.away);
       let line = `Home base <b>${esc(placeLabel(home))}</b>`;
-      if (away.length) line += ` · memory anchored in <b>${away.map(x => esc(placeLabel(x.place)) + (x.label ? ` (${esc(x.label)})` : '')).join('</b> and <b>')}</b>`;
-      else if (list.some(x => x.label)) line += ` · ${list.filter(x => x.label).map(x => esc(x.label)).join(', ')}`;
+      if (away.length) line += `, memory anchored in <b>${away.map(x => esc(placeLabel(x.place)) + (x.label ? ` (${esc(x.label)})` : '')).join('</b> and <b>')}</b>`;
+      else if (list.some(x => x.label)) line += `, ${list.filter(x => x.label).map(x => esc(x.label)).join(', ')}`;
       return a.spans.length > 1 ? `<span>${esc(spanLabel(s))}: ${line}</span>` : line;
     });
     return bits.join('<br>');
@@ -143,7 +143,7 @@
     memInner.innerHTML = `
       <button class="mem-close" aria-label="Close">✕</button>
       ${cover}
-      <div class="mem-kicker">${esc(when)} · ${esc(phase ? phase.name : '')}</div>
+      <div class="mem-kicker">${esc(when)}${phase ? `<span>${esc(phase.name)}</span>` : ''}</div>
       <h2>${esc(a.title)}</h2>
       <div class="mem-artist">${esc(a.artist)}</div>
       <div class="mem-where">${whereLine(a)}</div>

@@ -41,7 +41,7 @@
         <span class="spacer"></span>
         <span class="lbl">Limb</span>
         ${Object.entries(LIMB).map(([k, L]) => `<button class="chip-btn" data-l="${k}" aria-pressed="false">${L.label.split(' · ')[0].toLowerCase().replace('the ', '')}</button>`).join('')}
-        <button class="ctl" data-z="in" aria-label="Zoom in">＋</button><button class="ctl" data-z="out" aria-label="Zoom out">－</button><button class="ctl" data-z="reset">Fit</button>
+        <span class="zoom"><button class="ctl" data-z="in" aria-label="Zoom in">＋</button><button class="ctl" data-z="out" aria-label="Zoom out">－</button><button class="ctl" data-z="reset">Fit</button></span>
       </div>
       <div class="tr-wrap"><svg class="tr-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="The Listening Tree: albums grouped by how they were discovered"></svg></div>`;
     svg = d3.select(root.querySelector('svg'));

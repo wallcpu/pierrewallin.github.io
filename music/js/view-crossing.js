@@ -289,7 +289,7 @@
       if (t < 1998 || t > 2026) { cursor.attr('opacity', 0); readEl.style.opacity = 0; return; }
       cursor.attr('x1', mx).attr('x2', mx).attr('opacity', 1);
       const r = A.rotationAt(t), ph = A.phaseAt(t);
-      readEl.innerHTML = `${A.esc(A.seasonLabel(t))} · ${A.esc(A.placeLabel(A.homeAt(t)))} · <b>${r.n}</b> in rotation · ${A.esc(ph.name)}`;
+      readEl.innerHTML = `${A.esc(A.seasonLabel(t))}, ${A.esc(A.placeLabel(A.homeAt(t)))}, <b>${r.n}</b> in rotation, ${A.esc(ph.name)}`;
       const box = root.getBoundingClientRect(), sb = svg.node().getBoundingClientRect();
       readEl.style.left = (ev.clientX - box.left) + 'px';
       readEl.style.top = (sb.top - box.top + 8) + 'px';
