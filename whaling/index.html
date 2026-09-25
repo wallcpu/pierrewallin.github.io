@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>The Whale Road</title>
+<meta name="description" content="Every noon position in 1,436 whaling logbooks, 1784 to 1920, and all 15,709 American whaling voyages on record.">
+<meta name="author" content="Pierre Wallin">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://pierrewallin.com/whaling/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/whaling/">
+<meta property="og:title" content="The Whale Road">
+<meta property="og:description" content="Every noon position in 1,436 whaling logbooks, 1784 to 1920, and all 15,709 American whaling voyages on record.">
+<meta property="og:image" content="https://pierrewallin.com/assets/whaling-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="whaling/whaling.css?v=2">
+</head>
+<body class="whale">
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="/" class="brand">Pierre Wallin</a>
+    <ul class="nav-links">
+      <li><a href="music/">Music</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="u-head">
+  <div class="u-title">
+    <h1>The Whale Road</h1>
+    <p class="u-stats" id="uStats">American whaling, day by day, from the ships' own logbooks.</p>
+  </div>
+  <div class="u-switch">
+    <div class="u-tabs" role="tablist" aria-label="Views">
+      <button role="tab" data-view="grounds" aria-selected="true">The Grounds</button>
+      <button role="tab" data-view="voyage" aria-selected="false">One Voyage</button>
+      <button role="tab" data-view="fleet" aria-selected="false">The Fleet</button>
+    </div>
+    <p class="u-desc" id="uDesc"></p>
+  </div>
+</header>
+
+<main class="u-stage" id="uStage">
+  <section class="u-view" data-view="grounds" aria-label="The Grounds"></section>
+  <section class="u-view" data-view="voyage" aria-label="One Voyage"></section>
+  <section class="u-view" data-view="fleet" aria-label="The Fleet"></section>
+</main>
+
+<div class="u-tip" id="uTip" role="tooltip"></div>
+
+<footer class="u-foot">
+  <span>Data from <a href="https://whalinghistory.org" target="_blank" rel="noopener">Whaling History</a>: American Offshore Whaling Voyages, Logbook Data and Crew Lists, and Les Baleiniers Fran&ccedil;ais, by the New Bedford Whaling Museum, Mystic Seaport Museum and Nantucket Historical Association, under CC BY 4.0. Coastlines from Natural Earth.</span>
+  <span>Positions are the ship's own reckoning at noon, good to a few degrees. <span id="uNote"></span></span>
+</footer>
+
+<div class="cmdk" role="dialog" aria-label="Search the site">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search the site" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="assets/vendor/topojson-client.min.js"></script>
+<script src="whaling/data/whaling.js?v=2"></script>
+<script src="js/main.js"></script>
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+<script src="whaling/js/core.js?v=2"></script>
+<script src="whaling/js/view-grounds.js?v=2"></script>
+<script src="whaling/js/view-voyage.js?v=2"></script>
+<script src="whaling/js/view-fleet.js?v=2"></script>
+<script src="whaling/js/app.js?v=2"></script>
+</body>
+</html>
