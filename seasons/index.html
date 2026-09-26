@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>The Slow Clock</title>
+<meta name="description" content="Twelve centuries of cherry blossom in Kyoto, grape harvests in Burgundy, ice on Lake Suwa and the River Torne, on one clock of the year.">
+<meta name="author" content="Pierre Wallin">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://pierrewallin.com/seasons/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/seasons/">
+<meta property="og:title" content="The Slow Clock">
+<meta property="og:description" content="Twelve centuries of cherry blossom in Kyoto, grape harvests in Burgundy, ice on Lake Suwa and the River Torne, on one clock of the year.">
+<meta property="og:image" content="https://pierrewallin.com/assets/seasons-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="seasons/calendar.css?v=2">
+</head>
+<body class="calendar">
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="/" class="brand">Pierre Wallin</a>
+    <ul class="nav-links">
+      <li><a href="music/">Music</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="u-head">
+  <div class="u-title">
+    <h1>The Slow Clock</h1>
+    <p class="u-stats" id="uStats">Twelve centuries of the year, written down.</p>
+  </div>
+  <div class="u-switch">
+    <div class="u-tabs" role="tablist" aria-label="Views">
+      <button role="tab" data-view="clock" aria-selected="true">The Clock</button>
+      <button role="tab" data-view="kyoto" aria-selected="false">838 Springs</button>
+      <button role="tab" data-view="four" aria-selected="false">Side by Side</button>
+    </div>
+    <p class="u-desc" id="uDesc"></p>
+  </div>
+</header>
+
+<main class="u-stage" id="uStage">
+  <section class="u-view" data-view="clock" aria-label="The Clock"></section>
+  <section class="u-view" data-view="kyoto" aria-label="838 Springs"></section>
+  <section class="u-view" data-view="four" aria-label="Side by Side"></section>
+</main>
+
+<div class="u-tip" id="uTip" role="tooltip"></div>
+
+<footer class="u-foot">
+  <span>Kyoto's full-bloom dates of <i>Prunus jamasakura</i> come from Aono and Kazui (2008), Aono and Saito (2010) and Aono (2012), as kept by Yasuyuki Aono and Genki Katata, via <a href="https://ourworldindata.org/grapher/date-of-the-peak-cherry-tree-blossom-in-kyoto" target="_blank" rel="noopener">Our World in Data</a>. Burgundy's Pinot noir harvest dates come from Chuine et al. (2004) at NOAA NCEI Paleoclimatology. The ice dates for Lake Suwa and the River Torne come from the Global Lake and River Ice Phenology Database, NSIDC G01377.</span>
+  <span>Dates are Gregorian throughout. Burgundy's date is the median of up to 18 villages, set to Dijon's calendar.</span>
+</footer>
+
+<div class="cmdk" role="dialog" aria-label="Search the site">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search the site" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="seasons/data/calendar.js?v=2"></script>
+<script src="js/main.js"></script>
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+<script src="seasons/js/core.js?v=2"></script>
+<script src="seasons/js/view-clock.js?v=2"></script>
+<script src="seasons/js/view-kyoto.js?v=2"></script>
+<script src="seasons/js/view-four.js?v=2"></script>
+<script src="seasons/js/app.js?v=2"></script>
+</body>
+</html>
