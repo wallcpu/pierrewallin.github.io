@@ -406,6 +406,7 @@
       { i: '≈', t: 'The Whale Road: 136 years of whaling logbooks', s: '/whaling/', k: 'whaling whales whale ships logbooks voyages sea ocean melville moby dick acushnet new bedford nantucket fleet data viz visualization map' },
       { i: '✦', t: 'Night Coast: every lighthouse flashing its rhythm', s: '/lights/', k: 'lights lighthouses lighthouse buoys beacons sea coast night flashing rhythm morse sound listen iala red right returning openstreetmap data viz visualization map' },
       { i: '◷', t: 'The Slow Clock: twelve centuries of the year', s: '/seasons/', k: 'seasons clock calendar cherry blossom kyoto sakura grapes harvest burgundy wine lake suwa ice torne river climate phenology history data viz visualization' },
+      { i: '◐', t: 'Bluish Green: what people call colors', s: '/colors/', k: 'colors colours color names xkcd survey bluish green teal turquoise fuchsia puce map words light dark dusty data viz visualization' },
       { i: '✎', t: 'Writing',       s: '/blog.html',                    k: 'writing blog articles essays linkedin' },
       { i: '¶', t: 'The Weight of Stones (written by AI)', s: '/writing/the-weight-of-stones/', k: 'story fiction ai written by ai experiment stones japan kumano trail' },
       { i: '☺', t: 'About',         s: '/about.html',                   k: 'about bio who pierre' },
