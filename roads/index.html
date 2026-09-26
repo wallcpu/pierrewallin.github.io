@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>All Roads</title>
+<meta name="description" content="Every known road of the Roman Empire, 299,171 km of them, and how long each place took to reach on foot: from Rome, from anywhere, and how much of the map anyone is sure of.">
+<meta name="author" content="Pierre Wallin">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://pierrewallin.com/roads/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/roads/">
+<meta property="og:title" content="All Roads">
+<meta property="og:description" content="Every known road of the Roman Empire, 299,171 km of them, and how long each place took to reach on foot: from Rome, from anywhere, and how much of the map anyone is sure of.">
+<meta property="og:image" content="https://pierrewallin.com/assets/roads-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="roads/roads.css?v=2">
+</head>
+<body class="roads">
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="/" class="brand">Pierre Wallin</a>
+    <ul class="nav-links">
+      <li><a href="music/">Music</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="u-head">
+  <div class="u-title">
+    <h1>All Roads</h1>
+    <p class="u-stats" id="uStats">Every known road of the Roman Empire.</p>
+  </div>
+  <div class="u-switch">
+    <div class="u-tabs" role="tablist" aria-label="Views">
+      <button role="tab" data-view="rome" aria-selected="true">From Rome</button>
+      <button role="tab" data-view="known" aria-selected="false">What We Know</button>
+      <button role="tab" data-view="trip" aria-selected="false">A Journey</button>
+    </div>
+    <p class="u-desc" id="uDesc"></p>
+  </div>
+</header>
+
+<main class="u-stage" id="uStage">
+  <section class="u-view" data-view="rome" aria-label="From Rome"></section>
+  <section class="u-view" data-view="known" aria-label="What We Know"></section>
+  <section class="u-view" data-view="trip" aria-label="A Journey"></section>
+</main>
+
+<div class="u-tip" id="uTip" role="tooltip"></div>
+
+<footer class="u-foot">
+  <span>Roads from <a href="https://doi.org/10.5281/zenodo.17122148" target="_blank" rel="noopener">Itiner-e</a>, the 2024 edition of the high-resolution dataset of Roman roads by Pau de Soto, Adam Pa&#382;out, Tom Brughmans and colleagues at Aarhus and Barcelona, described in <a href="https://doi.org/10.1038/s41597-025-06140-z" target="_blank" rel="noopener">Scientific Data</a> (2025) and shared under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Coastlines from Natural Earth.</span>
+  <span>Places are named from the road records, which name each stretch of road for the places at its two ends; the points in between are forks. Walking times are a model, not a record. Two spellings of the Bordeaux itinerary and of the Ravenna Cosmography are counted together, and one builder&#8217;s dates, written 189-187 CE, are read as BCE, when Marcus Aemilius Lepidus built the Via Aemilia.</span>
+</footer>
+
+<div class="cmdk" role="dialog" aria-label="Search the site">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search the site" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="assets/vendor/topojson-client.min.js"></script>
+<script src="roads/data/roads.js?v=2"></script>
+<script src="js/main.js"></script>
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+<script src="roads/js/core.js?v=2"></script>
+<script src="roads/js/view-rome.js?v=2"></script>
+<script src="roads/js/view-known.js?v=2"></script>
+<script src="roads/js/view-trip.js?v=2"></script>
+<script src="roads/js/app.js?v=2"></script>
+</body>
+</html>
