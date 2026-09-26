@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>Night Coast</title>
+<meta name="description" content="73,004 lights on the world's coasts, each flashing its charted rhythm and color, from OpenStreetMap.">
+<meta name="author" content="Pierre Wallin">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://pierrewallin.com/lights/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/lights/">
+<meta property="og:title" content="Night Coast">
+<meta property="og:description" content="73,004 lights on the world's coasts, each flashing its charted rhythm and color, from OpenStreetMap.">
+<meta property="og:image" content="https://pierrewallin.com/assets/lights-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="lights/lights.css?v=7">
+</head>
+<body class="lights">
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="/" class="brand">Pierre Wallin</a>
+    <ul class="nav-links">
+      <li><a href="music/">Music</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="u-head">
+  <div class="u-title">
+    <h1>Night Coast</h1>
+    <p class="u-stats" id="uStats">Every light on the world's coasts, flashing its charted rhythm.</p>
+  </div>
+  <div class="u-switch">
+    <div class="u-tabs" role="tablist" aria-label="Views">
+      <button role="tab" data-view="night" aria-selected="true">The Night</button>
+      <button role="tab" data-view="grammar" aria-selected="false">The Grammar</button>
+      <button role="tab" data-view="rules" aria-selected="false">Red Right Returning</button>
+    </div>
+    <p class="u-desc" id="uDesc"></p>
+  </div>
+</header>
+
+<main class="u-stage" id="uStage">
+  <section class="u-view" data-view="night" aria-label="The Night"></section>
+  <section class="u-view" data-view="grammar" aria-label="The Grammar"></section>
+  <section class="u-view" data-view="rules" aria-label="Red Right Returning"></section>
+</main>
+
+<div class="u-tip" id="uTip" role="tooltip"></div>
+
+<footer class="u-foot">
+  <span>Light data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, from the seamark tags mapped by OpenSeaMap volunteers. The light list this page is built on is a derived database under the <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">ODbL</a>: <a href="lights/data/lights.js">lights.js</a>. Coastlines from Natural Earth.</span>
+  <span>For looking at, not for navigation. Rhythms are drawn from each light's charted character, period and sequence.</span>
+</footer>
+
+<div class="cmdk" role="dialog" aria-label="Search the site">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search the site" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="assets/vendor/topojson-client.min.js"></script>
+<script src="lights/data/lights.js?v=7"></script>
+<script src="js/main.js"></script>
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+<script src="lights/js/core.js?v=7"></script>
+<script src="lights/js/view-night.js?v=7"></script>
+<script src="lights/js/view-grammar.js?v=7"></script>
+<script src="lights/js/view-rules.js?v=7"></script>
+<script src="lights/js/app.js?v=7"></script>
+</body>
+</html>
