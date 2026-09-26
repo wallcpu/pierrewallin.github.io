@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>Bluish Green</title>
+<meta name="description" content="3.2 million names for the colors on a screen, from the xkcd color survey: a map of color names, every color behind a name, and what the words do.">
+<meta name="author" content="Pierre Wallin">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://pierrewallin.com/colors/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/colors/">
+<meta property="og:title" content="Bluish Green">
+<meta property="og:description" content="3.2 million names for the colors on a screen, from the xkcd color survey: a map of color names, every color behind a name, and what the words do.">
+<meta property="og:image" content="https://pierrewallin.com/assets/colors-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="colors/colors.css?v=3">
+</head>
+<body class="colors">
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="/" class="brand">Pierre Wallin</a>
+    <ul class="nav-links">
+      <li><a href="music/">Music</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="u-head">
+  <div class="u-title">
+    <h1>Bluish Green</h1>
+    <p class="u-stats" id="uStats">What people call the colors on a screen.</p>
+  </div>
+  <div class="u-switch">
+    <div class="u-tabs" role="tablist" aria-label="Views">
+      <button role="tab" data-view="map" aria-selected="true">The Map</button>
+      <button role="tab" data-view="name" aria-selected="false">One Name</button>
+      <button role="tab" data-view="words" aria-selected="false">What Words Do</button>
+    </div>
+    <p class="u-desc" id="uDesc"></p>
+  </div>
+</header>
+
+<main class="u-stage" id="uStage">
+  <section class="u-view" data-view="map" aria-label="The Map"></section>
+  <section class="u-view" data-view="name" aria-label="One Name"></section>
+  <section class="u-view" data-view="words" aria-label="What Words Do"></section>
+</main>
+
+<div class="u-tip" id="uTip" role="tooltip"></div>
+
+<footer class="u-foot">
+  <span>Data from the <a href="https://blog.xkcd.com/2010/05/03/color-survey-results/" target="_blank" rel="noopener">xkcd color survey</a>, which Randall Munroe ran in 2010 and released as a public dump. Everyone saw colors on their own screen, as you do here.</span>
+  <span>Left out: names that are slurs or crude sexual words, and the 8% of people the survey itself scored as likely spam. Names that differ only by a space or an apostrophe are counted together, and so are the common typos of a few dozen words; grey is counted as gray.</span>
+</footer>
+
+<div class="cmdk" role="dialog" aria-label="Search the site">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search the site" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="assets/vendor/d3.v7.min.js"></script>
+<script src="colors/data/colors.js?v=3"></script>
+<script src="js/main.js"></script>
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+<script src="colors/js/core.js?v=3"></script>
+<script src="colors/js/view-map.js?v=3"></script>
+<script src="colors/js/view-name.js?v=3"></script>
+<script src="colors/js/view-words.js?v=3"></script>
+<script src="colors/js/app.js?v=3"></script>
+</body>
+</html>
