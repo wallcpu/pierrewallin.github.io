@@ -386,7 +386,7 @@
       const message = form.message.value.trim();
       const subject = encodeURIComponent(`Hello from ${name || 'your website'}`);
       const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
-      window.location.href = `mailto:hello@pierrewallin.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:fullcircletrips@gmail.com?subject=${subject}&body=${body}`;
       toast('Opening your mail app…');
     });
   }
@@ -411,7 +411,7 @@
       { i: '✎', t: 'Writing',       s: '/blog.html',                    k: 'writing blog articles essays linkedin' },
       { i: '¶', t: 'The Weight of Stones (written by AI)', s: '/writing/the-weight-of-stones/', k: 'story fiction ai written by ai experiment stones japan kumano trail' },
       { i: '☺', t: 'About',         s: '/about.html',                   k: 'about bio who pierre' },
-      { i: '✉', t: 'Email Pierre',  s: 'mailto:hello@pierrewallin.com', k: 'email mail contact reach hello' },
+      { i: '✉', t: 'Email Pierre',  s: 'mailto:fullcircletrips@gmail.com', k: 'email mail contact reach hello write message' },
       { i: 'in', t: 'LinkedIn',     s: 'https://www.linkedin.com/in/pierre-e-wallin', k: 'linkedin social connect profile' },
       { i: '☀', t: 'Toggle theme',  s: 'action:theme',                  k: 'theme dark light mode appearance' },
       { i: '↗', t: 'Some Features My AI Assistant Does for Me, Ranked', s: 'https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae', k: 'essay article pearl features ranked' },

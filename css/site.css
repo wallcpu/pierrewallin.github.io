@@ -265,7 +265,7 @@ h2 { font-size: clamp(46px, 6.6vw, 104px); font-weight: 720; line-height: .9; le
 /* ---------- footer ---------- */
 .footer { padding: clamp(104px, 12vw, 168px) 0 38px; border-top: 1px solid var(--line); }
 .footer-lede { margin-bottom: 14px; font-size: 18px; color: var(--mute); }
-.footer-word { display: inline-block; font-size: clamp(26px, 6.9vw, 112px); font-weight: 720; line-height: 1; letter-spacing: -.05em; transition: color .25s, transform .35s var(--ease); }
+.footer-word { display: inline-block; font-size: clamp(20px, 6.9vw, 104px); font-weight: 720; line-height: 1; letter-spacing: -.05em; transition: color .25s, transform .35s var(--ease); }
 .footer-word:hover { color: var(--tone); }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; margin-top: clamp(72px, 9vw, 128px); font-size: 15px; color: var(--mute); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 26px; }
