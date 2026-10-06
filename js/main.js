@@ -408,17 +408,12 @@
       { i: '◷', t: 'The Slow Clock: twelve centuries of the year', s: '/seasons/', k: 'seasons clock calendar cherry blossom kyoto sakura grapes harvest burgundy wine lake suwa ice torne river climate phenology history data viz visualization' },
       { i: '◐', t: 'Bluish Green: what people call colors', s: '/colors/', k: 'colors colours color names xkcd survey bluish green teal turquoise fuchsia puce map words light dark dusty data viz visualization' },
       { i: '⟡', t: 'All Roads: the roads of the Roman Empire', s: '/roads/', k: 'roads roman empire rome via appia itinerary travel time walking ancient history map network all roads lead to rome data viz visualization' },
-      { i: '✎', t: 'Writing',       s: '/blog.html',                    k: 'writing blog articles essays linkedin' },
+      { i: '✎', t: 'Writing',       s: '/blog.html',                    k: 'writing blog stories story written by ai' },
       { i: '¶', t: 'The Weight of Stones (written by AI)', s: '/writing/the-weight-of-stones/', k: 'story fiction ai written by ai experiment stones japan kumano trail' },
       { i: '☺', t: 'About',         s: '/about.html',                   k: 'about bio who pierre' },
       { i: '✉', t: 'Email Pierre',  s: 'mailto:fullcircletrips@gmail.com', k: 'email mail contact reach hello write message' },
       { i: 'in', t: 'LinkedIn',     s: 'https://www.linkedin.com/in/pierre-e-wallin', k: 'linkedin social connect profile' },
-      { i: '☀', t: 'Toggle theme',  s: 'action:theme',                  k: 'theme dark light mode appearance' },
-      { i: '↗', t: 'Some Features My AI Assistant Does for Me, Ranked', s: 'https://www.linkedin.com/pulse/some-features-my-ai-assistant-does-me-ranked-pierre-wallin-mba-10oae', k: 'essay article pearl features ranked' },
-      { i: '↗', t: 'The Night I Realized My AI Assistant Wasn’t Broken, My Instructions Were', s: 'https://www.linkedin.com/pulse/night-i-realized-my-ai-assistant-wasnt-broken-were-pierre-wallin-mba-pbcye', k: 'essay article pearl instructions prompt' },
-      { i: '↗', t: 'Why My AI Assistant Keeps Forgetting I Don’t Drink Coffee', s: 'https://www.linkedin.com/pulse/why-my-ai-assistant-keeps-forgetting-i-dont-drink-pierre-wallin-mba-xwzae', k: 'essay article pearl memory coffee' },
-      { i: '↗', t: 'Version 3.0 Is Loading: A Brief History of Underestimating Microsoft', s: 'https://www.linkedin.com/pulse/version-30-loading-brief-history-underestimating-pierre-wallin-mba-m3hxe', k: 'essay article microsoft copilot history' },
-      { i: '↗', t: 'How I Used Three AIs to Build the Soul of a Fourth', s: 'https://www.linkedin.com/pulse/how-i-used-three-ais-build-soul-fourth-pierre-wallin-mba-puete', k: 'essay article pearl soul three ais' }
+      { i: '☀', t: 'Toggle theme',  s: 'action:theme',                  k: 'theme dark light mode appearance' }
     ];
 
     function render(q) {
