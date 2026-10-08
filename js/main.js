@@ -400,6 +400,7 @@
 
     const base = [
       { i: '◈', t: 'Home',          s: '/',                             k: 'home start top' },
+      { i: '▦', t: 'Projects',      s: '/#projects',                    k: 'projects work data viz visualizations all' },
       { i: '◐', t: 'The Album Atlas', s: '/music/',                     k: 'music albums atlas data viz visualization rotation crossing tree' },
       { i: '◌', t: 'Unidentified: 76 years of UFO reports', s: '/ufo/', k: 'ufo ufos reports sightings data viz visualization sky calendar average nuforc' },
       { i: '▲', t: 'Fifty Seasons: Survivor in data', s: '/survivor/', k: 'survivor tv show seasons castaways votes tribal council jury torches edit confessionals data viz visualization' },
