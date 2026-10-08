@@ -409,6 +409,7 @@
       { i: '◐', t: 'Bluish Green: what people call colors', s: '/colors/', k: 'colors colours color names xkcd survey bluish green teal turquoise fuchsia puce map words light dark dusty data viz visualization' },
       { i: '⟡', t: 'All Roads: the roads of the Roman Empire', s: '/roads/', k: 'roads roman empire rome via appia itinerary travel time walking ancient history map network all roads lead to rome data viz visualization' },
     { i: '⟡', t: 'Hard Cases: trolley problems, moral theories and old dilemmas', s: '/ethics/', k: 'ethics moral philosophy trolley problem footbridge kant utilitarianism virtue ethics deontology consequentialism dilemma mencius confucius plato survey philosophers data viz visualization' },
+    { i: '⟡', t: 'Where the Eye Sits: Japanese cinema, shot by shot, floor to sky', s: '/eye/', k: 'japanese cinema film films ozu mizoguchi kurosawa miyazaki naruse kobayashi oshima takahata kon kore-eda camera height shot length cinemetrics tokyo story ugetsu seven samurai spirited away data viz visualization' },
       { i: '✎', t: 'Writing',       s: '/blog.html',                    k: 'writing blog stories story written by ai' },
       { i: '¶', t: 'The Weight of Stones (written by AI)', s: '/writing/the-weight-of-stones/', k: 'story fiction ai written by ai experiment stones japan kumano trail' },
       { i: '☺', t: 'About',         s: '/about.html',                   k: 'about bio who pierre' },
