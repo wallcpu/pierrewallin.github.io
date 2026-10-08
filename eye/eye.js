@@ -22,7 +22,7 @@
   }
   const shot = (f, i) => {
     const v = f.F[i];
-    return { band: (v & 7) - 1, move: ((v >> 3) & 7) - 1, empty: ((v >> 6) & 3) - 1, mh: (v >> 8) & 1, air: (v >> 9) & 1, card: (v >> 10) & 1, word: (v >> 11) & 31 };
+    return { band: (v & 7) - 1, move: ((v >> 3) & 7) - 1, empty: ((v >> 6) & 3) - 1, hs: (v >> 8) & 3, air: (v >> 10) & 1, card: (v >> 11) & 1, word: (v >> 12) & 31 };
   };
   const bandOf = (f, s) => (s.band >= 0 ? s.band : f.bands[0]);
   const upper = (t, v) => { let lo = 0, hi = t.length; while (lo < hi) { const m = (lo + hi) >> 1; if (t[m] <= v) lo = m + 1; else hi = m; } return lo; };
@@ -244,9 +244,10 @@
     let h = `<b>${esc(f.t)}</b><small class="m">${esc(f.d)}, ${f.y}</small><small>Shot ${i + 1} of ${f.n}, ${dur(f.D[i] / 10)}</small>`;
     if (s.card) return h + '<small>An intertitle card</small>';
     if (s.empty === 1) return h + '<small>Nobody in the frame</small>';
-    const how = s.mh ? 'measured' : f.hs === 'documented' ? 'documented' : 'assumed';
+    const how = s.hs === 1 ? 'measured' : s.hs === 2 ? 'from the storyboard' : f.hs === 'documented' ? 'documented' : 'assumed';
     h += `<small>${esc(E.bands[bandOf(f, s)].label)}, ${how}</small>`;
     if (s.move >= 0) h += `<small>Camera: ${esc(s.word ? E.words[s.word - 1] : LEVEL[s.move])}</small>`;
+    if (s.air) h += '<small>In the air</small>';
     else h += '<small class="m">Movement not logged</small>';
     return h;
   }
@@ -365,16 +366,24 @@
     hideTip();
     current = f;
     const L = f.log || {};
-    const band = E.bands[f.bands[0]].label;
+    const lengths = f.ls === 'storyboard' ? `Planned durations from the storyboard${f.lb ? `, ${esc(f.lb)}` : ''}.`
+      : f.ls === 'pipeline' ? 'Measured from the film.'
+      : `Logged by <a href="https://cinemetrics.uchicago.edu/movie/${esc(L.uuid)}" target="_blank" rel="noopener">${esc(L.submitter)}</a> on Cinemetrics${L.date ? `, ${esc(L.date)}` : ''}.`;
+    const band = (E.bands.find(b => b.name === f.band) || E.bands[f.bands[0]]).label;
     let height;
     if (f.hs === 'documented') height = `${esc(band)}. Documented: ${esc(f.hb)} (${esc(f.hc)}).`;
     else if (f.hs === 'measured') height = 'Measured shot by shot.';
     else height = `${esc(band)}. <span class="no">Assumed: no source on this director&rsquo;s camera height was found.</span>`;
+    const hp = f.hps || {};
+    if (f.hs !== 'measured' && (hp.storyboard || hp.measured)) height += ` ${hp.sky} shots are in the sky and ${hp.above} above everyone&rsquo;s heads, set shot by shot ${hp.storyboard ? 'from the storyboard' : 'from measurements'}.`;
     let move;
-    if (f.ms === 'logged' || f.ms === 'measured') move = `${f.nM} of ${f.n} shots move. Logged by ${esc(f.mv.split(',')[0])}.`;
+    if (f.ms === 'logged') move = `${f.nM} of ${f.n} shots move. Logged by ${esc(f.mb)}.`;
+    else if (f.ms === 'measured') move = `${f.nM} of ${f.n} shots move, measured from the film.`;
+    else if (f.ms === 'storyboard') move = `${f.nM} of ${f.n} cuts move, from the storyboard&rsquo;s camera notes.`;
     else if (f.ms === 'documented') move = `None. The camera does not move in Ozu&rsquo;s films after <em>Equinox Flower</em> (1958): Bordwell, p. 14.`;
     else move = '<span class="no">Not logged. The row is drawn flat.</span>';
-    let empty = f.es === 'logged' || f.es === 'measured' ? `${f.nE} of ${f.n} shots have nobody in them. Logged by ${esc(f.em.split(',')[0])}.` : '<span class="no">Not logged. The row is drawn unbroken.</span>';
+    const eby = { logged: `Logged by ${esc(f.eb)}.`, measured: 'Measured from the film.', storyboard: 'From the storyboard.' }[f.es];
+    let empty = eby ? `${f.nE} of ${f.n} shots have nobody in them. ${eby}` : '<span class="no">Not logged. The row is drawn unbroken.</span>';
     if (f.nC) empty += ` ${f.nC} intertitle cards, tagged by ${esc(f.cards.split(',')[0])}, are left blank.`;
     const notes = [];
     if (f.sw) notes.push(`Not on the original list: added because ${esc(f.why)}.`);
@@ -387,7 +396,7 @@
       <div class="e-strip-wrap"><canvas class="e-strip"></canvas></div>
       <p class="e-strip-cap">The whole film, five minutes to a line. Click a shot to find it on the sheet.</p>
       <dl class="e-src">
-        <dt>Shot lengths</dt><dd>Logged by <a href="https://cinemetrics.uchicago.edu/movie/${esc(L.uuid)}" target="_blank" rel="noopener">${esc(L.submitter)}</a> on Cinemetrics${L.date ? `, ${esc(L.date)}` : ''}.</dd>
+        <dt>Shot lengths</dt><dd>${lengths}</dd>
         <dt>Height</dt><dd>${height}</dd>
         <dt>Movement</dt><dd>${move}</dd>
         <dt>Empty shots</dt><dd>${empty}</dd>
