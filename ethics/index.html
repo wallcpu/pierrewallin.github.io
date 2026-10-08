@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="/">
+<title>Hard Cases</title>
+<meta name="description" content="What 65,175 people did with three trolley problems, where nineteen theories of right and wrong part ways, and the moral dilemmas that keep coming back across 2,500 years.">
+<meta name="author" content="Pierre Wallin">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://pierrewallin.com/ethics/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pierrewallin.com/ethics/">
+<meta property="og:title" content="Hard Cases">
+<meta property="og:description" content="What 65,175 people did with three trolley problems, where nineteen theories of right and wrong part ways, and the moral dilemmas that keep coming back across 2,500 years.">
+<meta property="og:image" content="https://pierrewallin.com/assets/ethics-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="ethics/ethics.css?v=1">
+</head>
+<body class="ethics">
+
+<nav class="nav is-stuck">
+  <div class="nav-inner">
+    <a href="/" class="brand">Pierre Wallin</a>
+    <ul class="nav-links">
+      <li><a href="music/">Music</a></li>
+      <li><a href="blog.html">Writing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="kbd-hint" data-palette aria-label="Search the site"><kbd>&#8984;</kbd><kbd>K</kbd></button>
+      <button class="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="u-head">
+  <div class="u-title">
+    <h1>Hard Cases</h1>
+    <p class="u-stats" id="uStats">What 65,175 people did with three trolley problems, where nineteen theories of right and wrong part ways, and the dilemmas that keep coming back.</p>
+  </div>
+  <div class="u-switch">
+    <div class="u-tabs" role="tablist" aria-label="Views">
+      <button role="tab" data-view="gates" aria-selected="true">Three Gates</button>
+      <button role="tab" data-view="faults" aria-selected="false">Fault Lines</button>
+      <button role="tab" data-view="old" aria-selected="false">Old Questions</button>
+    </div>
+    <p class="u-desc" id="uDesc"></p>
+  </div>
+</header>
+
+<main class="u-stage" id="uStage">
+  <section class="u-view" data-view="gates" aria-label="Three Gates"></section>
+  <section class="u-view" data-view="faults" aria-label="Fault Lines"></section>
+  <section class="u-view" data-view="old" aria-label="Old Questions"></section>
+</main>
+
+<div class="u-tip" id="uTip" role="tooltip"></div>
+
+<footer class="u-foot">
+  <span>Trolley answers from Edmond Awad, Sohan Dsouza, Azim Shariff, Iyad Rahwan and Jean-Fran&ccedil;ois Bonnefon, <a href="https://doi.org/10.1073/pnas.1911517117" target="_blank" rel="noopener">Universals and variations in moral decisions made in 42 countries by 70,000 participants</a> (PNAS, 2020), with the response data the authors shared on <a href="https://osf.io/mxa6z/" target="_blank" rel="noopener">OSF</a>. Philosophers&#8217; answers from the <a href="https://survey2020.philpeople.org/" target="_blank" rel="noopener">2020 PhilPapers Survey</a> by David Bourget and David Chalmers.</span>
+  <span>Each verdict in Fault Lines names its source. Where a theory&#8217;s founders never took up a case, the usual reading in the secondary literature is marked as a reading, mostly from the <a href="https://plato.stanford.edu/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy</a>. Old Questions quotes each text in the translation linked beside it, and marks the few passages it summarizes instead. Word counts from the Google Books Ngram Viewer.</span>
+</footer>
+
+<div class="cmdk" role="dialog" aria-label="Search the site">
+  <div class="cmdk-box">
+    <input type="text" placeholder="Search the site" aria-label="Search">
+    <div class="cmdk-list"></div>
+  </div>
+</div>
+
+<script src="ethics/data/gates.js?v=1"></script>
+<script src="ethics/data/faults.js?v=1"></script>
+<script src="ethics/data/old.js?v=1"></script>
+<script src="js/main.js"></script>
+<script>document.documentElement.setAttribute('data-theme', 'dark');</script>
+<script src="ethics/js/core.js?v=1"></script>
+<script src="ethics/js/view-gates.js?v=1"></script>
+<script src="ethics/js/view-faults.js?v=1"></script>
+<script src="ethics/js/view-old.js?v=1"></script>
+<script src="ethics/js/app.js?v=1"></script>
+</body>
+</html>
