@@ -114,29 +114,49 @@
     targets.forEach(t => so.observe(t));
   }
 
-  /* ---------- Typed line (optionally tied to an album: its colour becomes the page accent) ---------- */
+  /* ---------- Typed line: every album with a cover, in a new random order on each visit; its colour becomes the page accent ---------- */
   const typedEl = $('[data-typed]');
   if (typedEl) {
-    const words = JSON.parse(typedEl.getAttribute('data-typed')).map(w => (typeof w === 'string' ? { t: w } : w));
+    const words = JSON.parse(typedEl.getAttribute('data-typed')).map(w => (Array.isArray(w)
+      ? { id: w[0], t: w[1], a: w[2], k: w[3], c: `music/covers/${w[0]}.jpg` }
+      : (typeof w === 'string' ? { t: w } : w)));
     const host = typedEl.parentElement;
     const cover = host.querySelector('.typed-cover');
-    words.forEach(w => { if (w.c) { const im = new Image(); im.src = w.c; } });
     const tint = w => {
       if (w.a) { root.style.setProperty('--accent', w.a); root.style.setProperty('--accent-ink', w.k || w.a); }
-      if (cover && w.c) { cover.classList.add('swap'); setTimeout(() => { cover.src = w.c; cover.classList.remove('swap'); }, 180); }
+      if (cover && w.c && cover.getAttribute('src') !== w.c) { cover.classList.add('swap'); setTimeout(() => { cover.src = w.c; cover.classList.remove('swap'); }, 180); }
     };
-    if (reduced) { typedEl.textContent = words[0].t; tint(words[0]); }
+    // shuffled decks: every album comes up once before any comes up again, and never twice in a row
+    const queue = [];
+    const deal = () => {
+      const d = words.map((_, i) => i);
+      for (let i = d.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [d[i], d[j]] = [d[j], d[i]]; }
+      if (d.length > 1 && d[0] === queue[queue.length - 1]) d.push(d.shift());
+      queue.push(...d);
+    };
+    deal();
+    const start = +typedEl.dataset.start;  // chosen by the inline script, whose cover is already showing
+    if (typedEl.dataset.start && words[start]) { queue.splice(queue.indexOf(start), 1); queue.unshift(start); }
+    const take = () => {
+      const w = words[queue.shift()];
+      if (queue.length < 2) deal();
+      const n = words[queue[0]];
+      if (n && n.c) new Image().src = n.c;
+      return w;
+    };
+    let cur = take();
+    if (reduced) { typedEl.textContent = cur.t; tint(cur); }
     else {
-      let wi = 0, ci = 0, deleting = false;
-      tint(words[0]);
+      let ci = 0, deleting = false;
+      tint(cur);
       (function tick() {
-        const w = words[wi].t;
+        const w = cur.t;
         ci += deleting ? -1 : 1;
         typedEl.textContent = w.slice(0, ci);
         host.dataset.typing = 'on';
         let delay = deleting ? 26 : 46 + Math.random() * 38;
         if (!deleting && ci === w.length) { delay = 2600; deleting = true; host.dataset.typing = 'hold'; }
-        else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; tint(words[wi]); delay = 380; host.dataset.typing = 'hold'; }
+        else if (deleting && ci === 0) { deleting = false; cur = take(); tint(cur); delay = 380; host.dataset.typing = 'hold'; }
         setTimeout(tick, delay);
       })();
     }
